@@ -1,0 +1,78 @@
+<!-- ============================================================== -->
+<!-- Info card -->
+<!-- ============================================================== -->
+<app-info-card 
+    [totMonthSales]="totMonthSales$ | async"
+    [totWeekSales]="totWeekSales$ | async"></app-info-card>
+<!-- ============================================================== -->
+<!-- Info card -->
+<!-- ============================================================== -->
+
+<div class="row">
+    <div class="col-md-6 col-lg-6">
+        <!-- ============================================================== -->
+        <!-- month sales chart -->
+        <!-- ============================================================== -->
+        <app-bar-chart 
+            [sales]="monthChart$ | async" 
+            [color]="'#4798e8'" 
+            [title]="lang.monthSalesTxt" 
+            [selector]="'month-chart'"
+            [orderLabelsKey]="'id'"
+            [orderTotalKey]="'Ordertotals'"></app-bar-chart>
+        <!-- ============================================================== -->
+        <!-- month sales chart -->
+        <!-- ============================================================== -->
+    </div>
+    <div class="col-md-6 col-lg-6">
+        <!-- ============================================================== -->
+        <!-- week sales chart -->
+        <!-- ============================================================== -->
+        <app-bar-chart 
+            [sales]="weekChart$ | async" 
+            [color]="'#22c6ab'" 
+            [title]="lang.weekSalesTxt" 
+            [selector]="'week-chart'"
+            [orderLabelsKey]="'id'"
+            [orderTotalKey]="'Ordertotals'"></app-bar-chart>
+        <!-- ============================================================== -->
+        <!-- week sales chart -->
+        <!-- ============================================================== -->
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- month & week details sales chart -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-md-6 col-lg-6">
+
+        <app-bar-chart 
+            [sales]="monthQueryChart$ | async" 
+            [color]="'#4798e8'" 
+            [title]="lang.monthSalesDetailsTxt" 
+            [selector]="'month-details-chart'"
+            [orderLabelsKey]="'catname'"
+            [orderTotalKey]="'SumTotal'"></app-bar-chart>
+    </div>
+    <div class="col-md-6 col-lg-6">
+        <app-bar-chart 
+            [sales]="weekQueryChart$ | async" 
+            [color]="'#22c6ab'" 
+            [title]="lang.weekSalesDetailsTxt" 
+            [selector]="'week-details-chart'"
+            [orderLabelsKey]="'catname'"
+            [orderTotalKey]="'SumTotal'"></app-bar-chart>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!--  month & week details sales chart -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- most selling items -->
+<!-- ============================================================== -->
+<app-items-reports [title]="lang.mostSellingTxt" [data]="itemsDetails$ | async"></app-items-reports>
+<!-- ============================================================== -->
+<!-- most selling items -->
+<!-- ============================================================== -->

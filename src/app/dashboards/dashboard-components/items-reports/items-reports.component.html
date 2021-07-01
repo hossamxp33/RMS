@@ -1,0 +1,57 @@
+<div class="card">
+    <div class="card-body">
+        <h4>{{title}}</h4>        
+    </div>
+
+    <div class="table-responsive">
+        <nz-table 
+            #headerTable  
+            nzShowPagination
+            [nzData]="data" 
+            [nzPageSize]="5" 
+            [nzScroll]="{ x: '240px' }"
+            class="table forms-table table-striped table-bordered"
+            *ngIf="data.length >= 1">
+            <thead>
+                <tr class="bg-light"> 
+                  <th *ngFor="let head of header; let i = index">
+                      {{head}}
+                  </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let d of headerTable.data" style="cursor: pointer;" (click)="getRecipes(d.item.itemreceipes)">
+                    <td>
+                        {{d.id}}
+                    </td>
+                    <td>
+                        {{d.order_id}}
+                    </td>                     
+                    <td>
+                        {{d.item.subcategory.category.name}}
+                    </td>
+                    <td>
+                        {{d.item.name}}
+                    </td>                       
+                    <td>
+                        {{d.item.price}}
+                    </td>                       
+                    <td>
+                        {{d.itemamount}}
+                    </td>                        
+                    <td>
+                        {{d.itemtotal}}
+                    </td>                        
+                </tr>
+            </tbody>
+        </nz-table>           
+    </div>        
+</div>
+
+<app-popup-details
+    [data]="itemRecipes"
+    [title]="lang.itemRecipesTxt"
+    [header]="popupHeader"
+    [isVisible]="isVisible"
+    (closeDV)="isVisible = $event"
+></app-popup-details>
