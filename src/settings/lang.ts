@@ -15,4 +15,8 @@ export const ar = {
     weekSalesDetailsTxt: 'بيع الاقسام الاسبوعية',
     mostSellingTxt: 'الاكثر مبيعا',
     itemRecipesTxt: 'المكونات',
+    marketersTxt: 'اجمالي المسوقين',
+    platFormsTxt: 'اجمالي المنصات',
+    paymentsTxt: 'طرق الدفع',
+    moneyFlowTxt: 'الايرادات و المصروفات',
 }

@@ -19,6 +19,11 @@ export const selectItemsReportsDetails = createSelector(
     items => items[0]["orderdetails"]
 )
 
+export const selectItemsReportsCategories = createSelector(
+    selectItemsReports,
+    items => items[0]["categories"]
+)
+
 export const isItemsReportsLoaded = createSelector(
     selectItemsReportsState,
     state => state.ItemsReportsLoaded

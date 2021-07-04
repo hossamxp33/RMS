@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
+import { IncomeExpensesReportResolver } from '../authentication/login/services/income-expenses.resolver';
 import { ItemsReportsResolver } from '../authentication/login/services/items-reports.resolver';
 import { MonthReportsResolver } from '../authentication/login/services/month-reports.resolver';
+import { OtherReportsResolver } from '../authentication/login/services/other-reports.resolver';
 import { SalesReportsResolver } from '../authentication/login/services/sales-reports.resolver';
 import { WeekReportsResolver } from '../authentication/login/services/week-reports.resolver';
 
@@ -26,7 +28,9 @@ export const DashboardRoutes: Routes = [
           SalesReports: SalesReportsResolver,
           ItemsReports: ItemsReportsResolver,
           MonthReports: MonthReportsResolver,
-          WeekReports: WeekReportsResolver
+          WeekReports: WeekReportsResolver,
+          OtherReports: OtherReportsResolver,
+          IncomeExpensesReport: IncomeExpensesReportResolver,
         }        
       },
       {

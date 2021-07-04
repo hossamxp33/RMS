@@ -36,6 +36,12 @@ input{
     font-size: 30px;
 }
 
+.txt-red{
+    color: #d83939;
+    font-weight: bold;
+    direction: ltr;
+}
+
 /* ****************    **************** */
 // Ant Styles Reset
 /* ****************    **************** */
@@ -49,7 +55,10 @@ input{
 }
 
 .ant-input-group,
-.ant-input-affix-wrapper{
+.ant-input-affix-wrapper,
+.ant-select-selection__placeholder, 
+.ant-select-search__field__placeholder,
+.ant-select-dropdown-menu-item{
     text-align: right;
 }
 
@@ -92,4 +101,8 @@ input{
 .ant-pagination-prev, 
 .ant-pagination-next{
     transform: rotate(180deg);
+}
+
+.ant-select-selection-selected-value{
+    float: right;
 }

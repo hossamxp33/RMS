@@ -1,4 +1,6 @@
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
+import { OrdersService } from 'src/services/orders/orders.service';
 import * as lang from './../../../../settings/lang';
 
 @Component({
@@ -9,6 +11,10 @@ import * as lang from './../../../../settings/lang';
 export class ItemsReportsComponent implements OnInit {
   @Input('title') title: string = '';
   @Input('data') data: any[] = [];
+  @Input('categories') categories: any[] = [];
+
+  filterBy: any[] = [];
+  selectedValue: any = null
 
   lang: any = lang.ar;
 
@@ -18,7 +24,6 @@ export class ItemsReportsComponent implements OnInit {
     'القسم',
     'العنصر',
     'السعر',
-    'الكمية',
     'الاجمالي'
   ]; 
   
@@ -30,9 +35,11 @@ export class ItemsReportsComponent implements OnInit {
     'العنصر',
     'السعر',
     'الكمية',
-  ]
+  ];
 
-  constructor() { }
+  isLoading: boolean = false;
+
+  constructor(private service: OrdersService, private fb: FormBuilder) { }
 
   ngOnInit() {
   }
@@ -51,6 +58,18 @@ export class ItemsReportsComponent implements OnInit {
     });
 
     return rec;
+  }
+
+  async filter(val) {  
+    this.isLoading = true;
+      
+    const formData = new FormData();
+    formData.append('Filter[Items][Subcategories][category_id]', val)
+    
+    let data = await this.service.filterOrders(formData).toPromise();
+    this.data = data["orderdetails"]
+
+    this.isLoading = false
   }
 
 }

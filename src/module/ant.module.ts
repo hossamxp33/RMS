@@ -4,7 +4,8 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTableModule } from 'ng-zorro-antd/table';
-import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzModalModule } from 'ng-zorro-antd/modal'
+import { NzSelectModule } from 'ng-zorro-antd/select';;
 
 @NgModule({
     declarations: [],
@@ -13,7 +14,8 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
         NzInputModule,
         NzIconModule,
         NzTableModule,
-        NzModalModule
+        NzModalModule,
+        NzSelectModule
     ],
     providers: [],
 })

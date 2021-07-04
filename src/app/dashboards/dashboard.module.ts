@@ -59,6 +59,12 @@ import { SalesReportsResolver } from '../authentication/login/services/sales-rep
 import { WeekReportsResolver } from '../authentication/login/services/week-reports.resolver';
 import { SharedModule } from 'src/module/shared.module';
 import { ItemsReportsComponent } from './dashboard-components/items-reports/items-reports.component';
+import { OtherReportsEffect } from '../RMS/store/other-reports/other-reports.effects';
+import { OtherReportsReducer } from '../RMS/store/other-reports/reducers/other-reports.reducer';
+import { OtherReportsResolver } from '../authentication/login/services/other-reports.resolver';
+import { IncomeExpensesReportEffect } from '../RMS/store/income-expenses/income-expenses.effects';
+import { IncomeExpensesReportReducer } from '../RMS/store/income-expenses/reducers/income-expenses.reducer';
+import { IncomeExpensesReportResolver } from '../authentication/login/services/income-expenses.resolver';
 
 @NgModule({
   imports: [
@@ -77,11 +83,15 @@ import { ItemsReportsComponent } from './dashboard-components/items-reports/item
       ItemsReportsEffect,
       MonthReportsEffect,
       WeekReportsEffect,
+      OtherReportsEffect,
+      IncomeExpensesReportEffect,
     ]),
     StoreModule.forFeature('SalesReports', SalesReportsReducer), 
     StoreModule.forFeature('ItemsReports', ItemsReportsReducer), 
     StoreModule.forFeature('MonthReports', MonthReportsReducer), 
     StoreModule.forFeature('WeekReports', WeekReportsReducer), 
+    StoreModule.forFeature('OtherReports', OtherReportsReducer),
+    StoreModule.forFeature('IncomeExpensesReport', IncomeExpensesReportReducer),  
     SharedModule
   ],
   declarations: [
@@ -117,7 +127,9 @@ import { ItemsReportsComponent } from './dashboard-components/items-reports/item
     SalesReportsResolver,
     ItemsReportsResolver,
     MonthReportsResolver,
-    WeekReportsResolver
+    WeekReportsResolver,
+    OtherReportsResolver,
+    IncomeExpensesReportResolver
   ]
 })
 export class DashboardModule {}

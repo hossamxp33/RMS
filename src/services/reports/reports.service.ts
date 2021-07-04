@@ -30,10 +30,24 @@ export class ReportsService {
       .pipe(
         shareReplay()
       )
-  }
+  } 
 
   weekReport() : Observable<any> {
     return this.http.get(`${environment.endpoint}/Orderdetails/getSellsByCategoryforweek.json`)
+      .pipe(
+        shareReplay()
+      )
+  }
+
+  otherReport() : Observable<any> {
+    return this.http.get(`${environment.endpoint}/orders/getordersReportByTypesForMonth.json`)
+      .pipe(
+        shareReplay()
+      )
+  }
+
+  incomeExpensesReport() : Observable<any> {
+    return this.http.get(`${environment.endpoint}/orderdetails/getdailyreportsByDayForMonth.json`)
       .pipe(
         shareReplay()
       )

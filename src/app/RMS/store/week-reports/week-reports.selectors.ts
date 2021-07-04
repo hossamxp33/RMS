@@ -19,6 +19,11 @@ export const selectWeekReportsQuery = createSelector(
     week => week[0]['query']
 )
 
+export const selectWeekReportsOffer = createSelector(
+    selectWeekReports,
+    week => week[0]['offerdetailsarray']
+)
+
 export const isWeekReportsLoaded = createSelector(
     selectWeekReportsState,
     state => state.WeekReportsLoaded

@@ -27,6 +27,12 @@ import { MonthReportsEffect } from '../RMS/store/month-reports/month-reports.eff
 import { WeekReportsEffect } from '../RMS/store/week-reports/week-reports.effects';
 import { WeekReportsReducer } from '../RMS/store/week-reports/reducers/week-reports.reducer';
 import { WeekReportsResolver } from './login/services/week-reports.resolver';
+import { OtherReportsResolver } from './login/services/other-reports.resolver';
+import { OtherReportsEffect } from '../RMS/store/other-reports/other-reports.effects';
+import { OtherReportsReducer } from '../RMS/store/other-reports/reducers/other-reports.reducer';
+import { IncomeExpensesReportEffect } from '../RMS/store/income-expenses/income-expenses.effects';
+import { IncomeExpensesReportReducer } from '../RMS/store/income-expenses/reducers/income-expenses.reducer';
+import { IncomeExpensesReportResolver } from './login/services/income-expenses.resolver';
 
 @NgModule({
   imports: [
@@ -39,11 +45,15 @@ import { WeekReportsResolver } from './login/services/week-reports.resolver';
       ItemsReportsEffect,
       MonthReportsEffect,
       WeekReportsEffect,
+      OtherReportsEffect,
+      IncomeExpensesReportEffect,
     ]),
     StoreModule.forFeature('SalesReports', SalesReportsReducer), 
     StoreModule.forFeature('ItemsReports', ItemsReportsReducer), 
     StoreModule.forFeature('MonthReports', MonthReportsReducer), 
     StoreModule.forFeature('WeekReports', WeekReportsReducer), 
+    StoreModule.forFeature('OtherReports', OtherReportsReducer), 
+    StoreModule.forFeature('IncomeExpensesReport', IncomeExpensesReportReducer), 
   ],
   declarations: [
     NotfoundComponent,
@@ -57,7 +67,9 @@ import { WeekReportsResolver } from './login/services/week-reports.resolver';
     SalesReportsResolver,
     ItemsReportsResolver,
     MonthReportsResolver,
-    WeekReportsResolver
+    WeekReportsResolver,
+    OtherReportsResolver,
+    IncomeExpensesReportResolver
   ]
 })
 export class AuthenticationModule {}

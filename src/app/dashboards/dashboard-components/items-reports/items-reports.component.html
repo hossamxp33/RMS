@@ -1,6 +1,22 @@
 <div class="card">
     <div class="card-body">
-        <h4>{{title}}</h4>        
+        <div class="float-left">
+            <h4>{{title}}</h4>        
+        </div>
+        <div class="float-right">
+            <nz-select 
+                style="width: 200px;" 
+                [(ngModel)]="selectedValue"
+                nzShowSearch 
+                nzAllowClear 
+                nzPlaceHolder="Filter By"
+                (ngModelChange)="filter($event)">
+                <nz-option 
+                    *ngFor="let c of categories" 
+                    [nzLabel]="c.name" 
+                    [nzValue]="c.id"></nz-option>
+            </nz-select>        
+        </div>
     </div>
 
     <div class="table-responsive">
@@ -11,6 +27,7 @@
             [nzPageSize]="5" 
             [nzScroll]="{ x: '240px' }"
             class="table forms-table table-striped table-bordered"
+            [nzLoading]="isLoading"
             *ngIf="data.length >= 1">
             <thead>
                 <tr class="bg-light"> 
@@ -22,7 +39,7 @@
             <tbody>
                 <tr *ngFor="let d of headerTable.data" style="cursor: pointer;" (click)="getRecipes(d.item.itemreceipes)">
                     <td>
-                        {{d.id}}
+                        {{d.item.id}}
                     </td>
                     <td>
                         {{d.order_id}}
@@ -35,12 +52,9 @@
                     </td>                       
                     <td>
                         {{d.item.price}}
-                    </td>                       
+                    </td>                                             
                     <td>
-                        {{d.itemamount}}
-                    </td>                        
-                    <td>
-                        {{d.itemtotal}}
+                        {{d.totalitemamount}}
                     </td>                        
                 </tr>
             </tbody>

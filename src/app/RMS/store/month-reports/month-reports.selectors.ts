@@ -19,6 +19,11 @@ export const selectMonthReportsQuery = createSelector(
     month => month[0]["query"]
 )
 
+export const selectMonthReportsOffer = createSelector(
+    selectMonthReports,
+    month => month[0]['offerdetailsarray']
+)
+
 export const isMonthReportsLoaded = createSelector(
     selectMonthReportsState,
     state => state.MonthReportsLoaded

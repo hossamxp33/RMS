@@ -39,6 +39,7 @@ import { environment } from '../environments/environment';
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import en from '@angular/common/locales/en';
 import { UsersService } from 'src/services/users/users.service';
+import { OrdersService } from 'src/services/orders/orders.service';
 
 registerLocaleData(en);
 
@@ -103,7 +104,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       useClass: HashLocationStrategy
     },
     { provide: NZ_I18N, useValue: en_US },
-    UsersService
+    UsersService,
+    OrdersService
   ],
   bootstrap: [AppComponent]
 })
