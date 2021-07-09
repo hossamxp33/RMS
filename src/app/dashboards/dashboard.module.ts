@@ -65,6 +65,15 @@ import { OtherReportsResolver } from '../authentication/login/services/other-rep
 import { IncomeExpensesReportEffect } from '../RMS/store/income-expenses/income-expenses.effects';
 import { IncomeExpensesReportReducer } from '../RMS/store/income-expenses/reducers/income-expenses.reducer';
 import { IncomeExpensesReportResolver } from '../authentication/login/services/income-expenses.resolver';
+import { ExpensesReportsResolver } from '../authentication/login/services/expenses-reports.resolver';
+import { ExpensesReportsEffect } from '../RMS/store/expenses-reports/expenses-reports.effects';
+import { ExpensesReportsReducer } from '../RMS/store/expenses-reports/reducers/expenses-reports.reducer';
+import { LoansReportsResolver } from '../authentication/login/services/loans-reports.resolver';
+import { LoansReportsEffect } from '../RMS/store/loans-reports/loans-reports.effects';
+import { LoansReportsReducer } from '../RMS/store/loans-reports/reducers/loans-reports.reducer';
+import { ExpensesCatReportsResolver } from '../authentication/login/services/expenses-cat-reports.resolver';
+import { ExpensesCatReportsEffect } from '../RMS/store/expenses-cat-reports/expenses-cat-reports.effects';
+import { ExpensesCatReportsReducer } from '../RMS/store/expenses-cat-reports/reducers/expenses-cat-reports.reducer';
 
 @NgModule({
   imports: [
@@ -85,13 +94,19 @@ import { IncomeExpensesReportResolver } from '../authentication/login/services/i
       WeekReportsEffect,
       OtherReportsEffect,
       IncomeExpensesReportEffect,
+      ExpensesReportsEffect,
+      LoansReportsEffect,
+      ExpensesCatReportsEffect,
     ]),
     StoreModule.forFeature('SalesReports', SalesReportsReducer), 
     StoreModule.forFeature('ItemsReports', ItemsReportsReducer), 
     StoreModule.forFeature('MonthReports', MonthReportsReducer), 
     StoreModule.forFeature('WeekReports', WeekReportsReducer), 
     StoreModule.forFeature('OtherReports', OtherReportsReducer),
-    StoreModule.forFeature('IncomeExpensesReport', IncomeExpensesReportReducer),  
+    StoreModule.forFeature('IncomeExpensesReport', IncomeExpensesReportReducer), 
+    StoreModule.forFeature('ExpensesReports', ExpensesReportsReducer), 
+    StoreModule.forFeature('LoansReports', LoansReportsReducer), 
+    StoreModule.forFeature('ExpensesCatReports', ExpensesCatReportsReducer), 
     SharedModule
   ],
   declarations: [
@@ -129,7 +144,10 @@ import { IncomeExpensesReportResolver } from '../authentication/login/services/i
     MonthReportsResolver,
     WeekReportsResolver,
     OtherReportsResolver,
-    IncomeExpensesReportResolver
+    IncomeExpensesReportResolver,
+    ExpensesReportsResolver,
+    LoansReportsResolver,
+    ExpensesCatReportsResolver,
   ]
 })
 export class DashboardModule {}

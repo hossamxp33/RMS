@@ -51,5 +51,26 @@ export class ReportsService {
       .pipe(
         shareReplay()
       )
+  }
+
+  ExpensesReport() : Observable<any> {
+    return this.http.get(`${environment.endpoint}/Expenses/getExpesesForMonth.json`)
+      .pipe(
+        shareReplay()
+      )
+  }
+
+  LoansReport() : Observable<any> {
+    return this.http.get(`${environment.endpoint}/StaffPayments/getPaymentForMonth.json`)
+      .pipe(
+        shareReplay()
+      )
+  }
+
+  ExpensesCatReport() : Observable<any> {
+    return this.http.get(`${environment.endpoint}/Expenses/getExpesesForWeek.json`)
+      .pipe(
+        shareReplay()
+      )
   }  
 }

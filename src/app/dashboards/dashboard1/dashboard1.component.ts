@@ -9,6 +9,9 @@ import { selectMonthReportsOffer, selectMonthReportsQuery } from 'src/app/RMS/st
 import { selectItemsReportsCategories, selectItemsReportsDetails } from 'src/app/RMS/store/items-reports/items-reports.selectors';
 import { selectMarketersOrders, selectPaymenttypesOrders, selectPlatformsOrders } from 'src/app/RMS/store/other-reports/other-reports.selectors';
 import { selectIncomeExpensesReportEntity } from 'src/app/RMS/store/income-expenses/income-expenses.selectors';
+import { selectExpensesReportsQuery } from 'src/app/RMS/store/expenses-reports/expenses-reports.selectors';
+import { selectLoansReportsQuery } from 'src/app/RMS/store/loans-reports/loans-reports.selectors';
+import { selectExpensesCatReportsQuery } from 'src/app/RMS/store/expenses-cat-reports/expenses-cat-reports.selectors';
 
 @Component({
   templateUrl: './dashboard1.component.html',
@@ -30,6 +33,9 @@ export class Dashboard1Component implements OnInit {
   platFormsOrders$: Observable<any>;
   payments$: Observable<any>;
   incomeExpenses$: Observable<any>;
+  expenses$: Observable<any>;
+  loans$: Observable<any>;
+  expensesCat$: Observable<any>;
 
   allWeekChartData: any = [];
   allMonthChartData: any = [];
@@ -37,6 +43,8 @@ export class Dashboard1Component implements OnInit {
   platFormsOrders: any[] = [];
   payments: any[] = [];
   incomeExpenses: any[] = [];
+  expensessTotal: number = 0;
+  loansTotal: number = 0;
 
   incomeExpensesHeader: any[] = [
     'الخصم',
@@ -101,7 +109,14 @@ export class Dashboard1Component implements OnInit {
 
     this.incomeExpenses$ = this.store.pipe(select(selectIncomeExpensesReportEntity));
     this.incomeExpenses$.subscribe( res => this.incomeExpenses = this.moneyFlow(res[0]["allsales"], res[0]["Expenses"], res[0]["StaffPayments"]) )
+    
+    this.expenses$ = this.store.pipe(select(selectExpensesReportsQuery));
+    this.expenses$.subscribe(res => this.expensessTotal = res.map(val => {return val["SumTotal"]}).reduce((prev, curr) => prev + curr) )
+  
+    this.loans$ = this.store.pipe(select(selectLoansReportsQuery));
+    this.loans$.subscribe(res => (res.length > 0) ? this.loansTotal = res[0]["SumTotal"] : this.loansTotal = 0);
 
+    this.expensesCat$ = this.store.pipe(select(selectExpensesCatReportsQuery));
   }
 
   moneyFlow(income: any[], expenses: any[], loans: any[]) {

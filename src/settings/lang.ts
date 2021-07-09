@@ -19,4 +19,6 @@ export const ar = {
     platFormsTxt: 'اجمالي المنصات',
     paymentsTxt: 'طرق الدفع',
     moneyFlowTxt: 'الايرادات و المصروفات',
+    expensesTxt: 'مجموع المصروفات',
+    expensesChartTxt: 'توزيع المصروفات',
 }

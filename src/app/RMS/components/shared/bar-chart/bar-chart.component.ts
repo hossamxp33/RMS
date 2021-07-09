@@ -47,7 +47,7 @@ export class BarChartComponent implements OnInit, AfterViewInit {
       'الثلاثاء',
       'الاربعاء',
       'الخميس',
-    ] : this.orderLabels = this.sales.map(s => s[this.orderLabelsKey]);
+    ] : this.orderLabels = this.sales.map(s => `${s[this.orderLabelsKey]} - ${s[this.orderTotalKey].toFixed(2)}`);
 
     this.orderTotal = this.sales.map(s => parseFloat(s[this.orderTotalKey].toFixed(2)));
   }

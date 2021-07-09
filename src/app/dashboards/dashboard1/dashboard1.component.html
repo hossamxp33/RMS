@@ -59,6 +59,36 @@
 <!-- Payaments -->
 <!-- ============================================================== -->
 
+<!-- ============================================================== -->
+<!-- Expensess -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-md-12">
+        <h4>{{lang.expensesTxt}}</h4>
+    </div>
+
+    <div class="col-md-6">     
+        <app-stats-info
+            [infoClass]="'btn-danger'"
+            [infoIcon]="'fas fa-money-bill-alt'"
+            [infoTxt]="'المصروفات'"
+            [infoTotal]="expensessTotal"
+        ></app-stats-info>
+    </div>
+
+    <div class="col-md-6">     
+        <app-stats-info
+            [infoClass]="'btn-danger'"
+            [infoIcon]="'fas fa-money-bill-alt'"
+            [infoTxt]="'السلف'"
+            [infoTotal]="loansTotal"
+        ></app-stats-info>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Expensess -->
+<!-- ============================================================== -->
+
 <div class="row">
     <div class="col-md-6 col-lg-6">
         <!-- ============================================================== -->
@@ -122,6 +152,26 @@
 </div>
 <!-- ============================================================== -->
 <!--  month & week details sales chart -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- month expensess -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-md-6">
+
+        <app-bar-chart 
+            [sales]="expensesCat$ | async" 
+            [color]="'#4798e8'" 
+            [title]="lang.expensesChartTxt" 
+            [selector]="'expenses-cat-chart'"
+            [type]="'pie'"
+            [orderLabelsKey]="'categoryname'"
+            [orderTotalKey]="'SumTotal'"></app-bar-chart>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!--  month expensess -->
 <!-- ============================================================== -->
 
 <!-- ============================================================== -->
