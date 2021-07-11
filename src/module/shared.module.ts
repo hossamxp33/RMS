@@ -1,6 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ExpensessDetailsComponent } from "src/app/dashboards/dashboard-components/expensess-details/expensess-details.component";
+import { LoansInfoComponent } from "src/app/dashboards/dashboard-components/loans-info/loans-info.component";
 import { BarChartComponent } from "src/app/RMS/components/shared/bar-chart/bar-chart.component";
 import { InfoTblComponent } from "src/app/RMS/components/shared/info-tbl/info-tbl.component";
 import { PopupDetailsComponent } from "src/app/RMS/components/shared/popup-details/popup-details.component";
@@ -14,7 +16,9 @@ import { PipesModule } from "./pipes.module";
         BarChartComponent,
         PopupDetailsComponent,
         StatsInfoComponent,
-        InfoTblComponent
+        InfoTblComponent,
+        ExpensessDetailsComponent,
+        LoansInfoComponent
     ],
     imports: [
         CommonModule,  
@@ -29,7 +33,7 @@ import { PipesModule } from "./pipes.module";
         BarChartComponent,
         PopupDetailsComponent,
         StatsInfoComponent,
-        InfoTblComponent
+        InfoTblComponent,        
     ],
 })
 

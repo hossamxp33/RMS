@@ -1,8 +1,10 @@
-<div class="card">
-    <div class="card-body">
-        <h4>{{title}}</h4>        
-    </div>
-    
+<nz-modal
+    [(nzVisible)]="isVisible" 
+    [nzTitle]="'تفاصيل المصروفات'" 
+    (nzOnCancel)="handleCancel()"
+    nzWidth="60%"
+    [nzStyle]="{ top: '20px' }"
+    nzClassName="lang-ar">
     <div class="table-responsive">
         <nz-table 
             #headerTable  
@@ -21,26 +23,12 @@
             </thead>
             <tbody>
                 <tr *ngFor="let allData of headerTable.data; let i = index" >
-                    <td 
-                        *ngFor="let d of allData | render" 
-                        class="hide-long-text"
-                        [class.txt-red]="allData[d] < 0"
-                        [class.pointer]="d == 'expense' || d == 'loan'"
-                        (click)="getDetails(d, allData['modifiedd'])">{{allData[d] | round}}</td>
+                    <td>{{allData.id}}</td>
+                    <td>{{allData.staff.name}}</td>
+                    <td>{{allData.notes}}</td>
                 </tr>
             </tbody>
         </nz-table>
         <nz-table [nzData]="data" *ngIf="data.length == 0"></nz-table>              
     </div>
-</div>
-
-
-<app-expensess-details
-    [data]="expensessData"
-    [isVisible]="isVisible"
-    (closeDV)="isVisible = $event"></app-expensess-details>
-
-<app-loans-info
-    [data]="LoansData"
-    [isVisible]="isLoanVisible"
-    (closeDV)="isLoanVisible = $event"></app-loans-info>
+</nz-modal>

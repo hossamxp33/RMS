@@ -47,6 +47,7 @@ export class Dashboard1Component implements OnInit {
   loansTotal: number = 0;
 
   incomeExpensesHeader: any[] = [
+    'التاريخ',
     'الخصم',
     'الايراد',
     'الخدمة',
@@ -126,9 +127,9 @@ export class Dashboard1Component implements OnInit {
       let expense = (index < expenses.length) ? expenses[index]["SumTotal"] : 0;
       let net = val["SumTotal"] - expense;
       let loan = (index < loans.length) ? loans[index]["SumTotal"] : 0;
-      let existing = (Boolean(index)) ? net + incomeExpenses[index - 1]["net"] : net;
+      let existing = (Boolean(index)) ? net + incomeExpenses[index - 1]["existing"] : net;
 
-      let moneyFlow = Object.assign({}, val, { expense:  expense, loan: loan, net: net, existing: (existing > 0) ? existing : 0});
+      let moneyFlow = Object.assign({}, val, { expense:  expense, loan: loan, net: net, existing: existing});
 
       incomeExpenses = [...incomeExpenses, moneyFlow]
     });
