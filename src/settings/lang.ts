@@ -20,5 +20,6 @@ export const ar = {
     paymentsTxt: 'طرق الدفع',
     moneyFlowTxt: 'الايرادات و المصروفات',
     expensesTxt: 'مجموع المصروفات',
-    expensesChartTxt: 'توزيع المصروفات',
+    expensesChartTxt: 'توزيع المصروفات الاسبوعية',
+    expensesChartMonthTxt: 'توزيع المصروفات الشهرية',
 }

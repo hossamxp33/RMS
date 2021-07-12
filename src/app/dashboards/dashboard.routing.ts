@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { ExpensesCatMonthReportsResolver } from '../authentication/login/services/expenses-cat-month-reports.resolver';
 import { ExpensesCatReportsResolver } from '../authentication/login/services/expenses-cat-reports.resolver';
 import { ExpensesReportsResolver } from '../authentication/login/services/expenses-reports.resolver';
 import { IncomeExpensesReportResolver } from '../authentication/login/services/income-expenses.resolver';
@@ -37,6 +38,7 @@ export const DashboardRoutes: Routes = [
           ExpensesReports: ExpensesReportsResolver,
           LoansReports: LoansReportsResolver,
           ExpensesCatReports: ExpensesCatReportsResolver,
+          ExpensesCatMonthReports: ExpensesCatMonthReportsResolver,
         }        
       },
       {

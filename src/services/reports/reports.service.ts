@@ -72,5 +72,12 @@ export class ReportsService {
       .pipe(
         shareReplay()
       )
+  }
+
+  ExpensesCatMonthReport() : Observable<any> {
+    return this.http.get(`${environment.endpoint}/Expenses/getExpesesForMonth.json`)
+      .pipe(
+        shareReplay()
+      )
   }  
 }

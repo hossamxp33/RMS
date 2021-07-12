@@ -12,6 +12,7 @@ import { selectIncomeExpensesReportEntity } from 'src/app/RMS/store/income-expen
 import { selectExpensesReportsQuery } from 'src/app/RMS/store/expenses-reports/expenses-reports.selectors';
 import { selectLoansReportsQuery } from 'src/app/RMS/store/loans-reports/loans-reports.selectors';
 import { selectExpensesCatReportsQuery } from 'src/app/RMS/store/expenses-cat-reports/expenses-cat-reports.selectors';
+import { selectExpensesCatMonthReportsQuery } from 'src/app/RMS/store/expenses-cat-month-reports/expenses-cat-month-reports.selectors';
 
 @Component({
   templateUrl: './dashboard1.component.html',
@@ -36,6 +37,7 @@ export class Dashboard1Component implements OnInit {
   expenses$: Observable<any>;
   loans$: Observable<any>;
   expensesCat$: Observable<any>;
+  expensesCatMonth$: Observable<any>;
 
   allWeekChartData: any = [];
   allMonthChartData: any = [];
@@ -118,19 +120,20 @@ export class Dashboard1Component implements OnInit {
     this.loans$.subscribe(res => (res.length > 0) ? this.loansTotal = res[0]["SumTotal"] : this.loansTotal = 0);
 
     this.expensesCat$ = this.store.pipe(select(selectExpensesCatReportsQuery));
+    this.expensesCatMonth$ = this.store.pipe(select(selectExpensesCatMonthReportsQuery));
   }
 
   moneyFlow(income: any[], expenses: any[], loans: any[]) {
     let incomeExpenses: any [] = [];
-
     income.forEach((val, index) => {
       let expense = (index < expenses.length) ? expenses[index]["SumTotal"] : 0;
       let net = val["SumTotal"] - expense;
-      let loan = (index < loans.length) ? loans[index]["SumTotal"] : 0;
+      let loan =  (index < loans.length) ? loans[index]["SumTotal"] : 0;
+
       let existing = (Boolean(index)) ? net + incomeExpenses[index - 1]["existing"] : net;
 
       let moneyFlow = Object.assign({}, val, { expense:  expense, loan: loan, net: net, existing: existing});
-
+      console.log(val["modifiedd"], expenses[index]["modifiedd"], loans[index]["modifiedd"])
       incomeExpenses = [...incomeExpenses, moneyFlow]
     });
 

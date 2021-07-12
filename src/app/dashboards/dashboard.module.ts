@@ -74,6 +74,9 @@ import { LoansReportsReducer } from '../RMS/store/loans-reports/reducers/loans-r
 import { ExpensesCatReportsResolver } from '../authentication/login/services/expenses-cat-reports.resolver';
 import { ExpensesCatReportsEffect } from '../RMS/store/expenses-cat-reports/expenses-cat-reports.effects';
 import { ExpensesCatReportsReducer } from '../RMS/store/expenses-cat-reports/reducers/expenses-cat-reports.reducer';
+import { ExpensesCatMonthReportsResolver } from '../authentication/login/services/expenses-cat-month-reports.resolver';
+import { ExpensesCatMonthReportsReducer } from '../RMS/store/expenses-cat-month-reports/reducers/expenses-cat-month-reports.reducer';
+import { ExpensesCatMonthReportsEffect } from '../RMS/store/expenses-cat-month-reports/expenses-cat-month-reports.effects';
 
 @NgModule({
   imports: [
@@ -97,6 +100,7 @@ import { ExpensesCatReportsReducer } from '../RMS/store/expenses-cat-reports/red
       ExpensesReportsEffect,
       LoansReportsEffect,
       ExpensesCatReportsEffect,
+      ExpensesCatMonthReportsEffect,
     ]),
     StoreModule.forFeature('SalesReports', SalesReportsReducer), 
     StoreModule.forFeature('ItemsReports', ItemsReportsReducer), 
@@ -106,7 +110,8 @@ import { ExpensesCatReportsReducer } from '../RMS/store/expenses-cat-reports/red
     StoreModule.forFeature('IncomeExpensesReport', IncomeExpensesReportReducer), 
     StoreModule.forFeature('ExpensesReports', ExpensesReportsReducer), 
     StoreModule.forFeature('LoansReports', LoansReportsReducer), 
-    StoreModule.forFeature('ExpensesCatReports', ExpensesCatReportsReducer), 
+    StoreModule.forFeature('ExpensesCatReports', ExpensesCatReportsReducer),
+    StoreModule.forFeature('ExpensesCatMonthReports', ExpensesCatMonthReportsReducer),
     SharedModule
   ],
   declarations: [
@@ -148,6 +153,7 @@ import { ExpensesCatReportsReducer } from '../RMS/store/expenses-cat-reports/red
     ExpensesReportsResolver,
     LoansReportsResolver,
     ExpensesCatReportsResolver,
+    ExpensesCatMonthReportsResolver,
   ]
 })
 export class DashboardModule {}

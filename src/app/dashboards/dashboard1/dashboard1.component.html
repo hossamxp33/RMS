@@ -159,7 +159,17 @@
 <!-- ============================================================== -->
 <div class="row">
     <div class="col-md-6">
+        <app-bar-chart 
+            [sales]="expensesCatMonth$ | async" 
+            [color]="'#4798e8'" 
+            [title]="lang.expensesChartMonthTxt" 
+            [selector]="'expenses-cat-month-chart'"
+            [type]="'pie'"
+            [orderLabelsKey]="'catname'"
+            [orderTotalKey]="'SumTotal'"></app-bar-chart>
+    </div>
 
+    <div class="col-md-6">
         <app-bar-chart 
             [sales]="expensesCat$ | async" 
             [color]="'#4798e8'" 

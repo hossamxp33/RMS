@@ -47,11 +47,12 @@ export class BarChartComponent implements OnInit, AfterViewInit {
       'الثلاثاء',
       'الاربعاء',
       'الخميس',
-    ].reverse() : this.orderLabels = this.sales.map(s => `${s[this.orderLabelsKey]} - ${s[this.orderTotalKey].toFixed(2)}`);
+    ] : this.orderLabels = this.sales.map(s => `${s[this.orderLabelsKey]} - ${s[this.orderTotalKey].toFixed(2)}`);
 
     this.orderTotal = this.sales.map(s => parseFloat(s[this.orderTotalKey].toFixed(2)));
     
-    (this.selector == 'week-chart') && this.orderTotal.reverse();
+    (this.selector == 'week-chart' || this.selector == 'month-chart') && this.orderTotal.reverse();
+    (this.selector == 'week-chart' || this.selector == 'month-chart') && this.orderLabels.reverse();
   }
 
   ngAfterViewInit() {
