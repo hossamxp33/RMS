@@ -125,17 +125,26 @@ export class Dashboard1Component implements OnInit {
 
   moneyFlow(income: any[], expenses: any[], loans: any[]) {
     let incomeExpenses: any [] = [];
-    income.forEach((val, index) => {
-      let expense = (index < expenses.length) ? expenses[index]["SumTotal"] : 0;
-      let net = val["SumTotal"] - expense;
-      let loan =  (index < loans.length) ? loans[index]["SumTotal"] : 0;
 
-      let existing = (Boolean(index)) ? net + incomeExpenses[index - 1]["existing"] : net;
-
-      let moneyFlow = Object.assign({}, val, { expense:  expense, loan: loan, net: net, existing: existing});
-      console.log(val["modifiedd"], expenses[index]["modifiedd"], loans[index]["modifiedd"])
-      incomeExpenses = [...incomeExpenses, moneyFlow]
+    let expense = income.map(val => {
+      const index = expenses.findIndex(d => d.modifiedd == val["modifiedd"]);
+      return (index > -1) ? {...val, expense: expenses[index]["SumTotal"]} : {...val, expense: 0};
     });
+
+    let loan = expense.map(val => {
+      const index = loans.findIndex(d => d.modifiedd == val["modifiedd"]);
+      return (index > -1) ? {...val, loan: loans[index]["SumTotal"]} : {...val, loan: 0};
+    });
+
+    let net = loan.map(val => {
+      return {...val, net: val["SumTotal"] - val["expense"]}
+    })
+
+    net.forEach((val, index) => {
+      let existing = (index == 0) ? val["net"] : val["net"] + incomeExpenses[index - 1]["existing"];
+      let moneyFlow = Object.assign({}, val, {existing: existing});
+      incomeExpenses = [...incomeExpenses, moneyFlow]
+    })
 
     return incomeExpenses;
   }
