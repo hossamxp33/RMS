@@ -3,14 +3,6 @@ import { RouteInfo } from './sidebar.metadata';
 export const ROUTES: RouteInfo[] = [
   {
     path: '',
-    title: 'Personal',
-    icon: 'mdi mdi-dots-horizontal',
-    class: 'nav-small-cap',
-    extralink: true,
-    submenu: []
-  },
-  {
-    path: '',
     title: 'Dashboards',
     icon: 'icon-Car-Wheel',
     class: 'has-arrow',
@@ -44,76 +36,36 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: '',
-    title: 'Apps',
-    icon: 'mdi mdi-dots-horizontal',
-    class: 'nav-small-cap',
-    extralink: true,
-    submenu: []
-  },
-  {
-    path: '/apps/email',
-    title: 'Email',
-    icon: 'icon-Mailbox-Empty',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  {
-    path: '',
-    title: 'Ticket',
-    icon: 'icon-Ticket',
+    title: 'المخزون',
+    icon: 'mdi mdi-playlist-check',
     class: 'has-arrow',
     extralink: false,
     submenu: [
       {
-        path: '/apps/ticketlist',
-        title: 'Ticket List',
+        path: '/inv/reports',
+        title: 'تقارير المخزون',
         icon: '',
         class: '',
         extralink: false,
         submenu: []
       },
-      {
-        path: '/apps/ticketdetails',
-        title: 'Ticket Details',
-        icon: '',
-        class: '',
-        extralink: false,
-        submenu: []
-      }
     ]
   },
   {
     path: '',
-    title: 'Extra',
-    icon: 'icon-Sunglasses-Smiley',
+    title: 'التكلفة',
+    icon: 'fas fa-dollar-sign',
     class: 'has-arrow',
     extralink: false,
     submenu: [
       {
-        path: '/apps/chat',
-        title: 'Chat App',
+        path: '/cost/reports',
+        title: 'تقارير التكلفة',
         icon: '',
         class: '',
         extralink: false,
         submenu: []
       },
-      {
-        path: '/apps/fullcalendar',
-        title: 'Calendar',
-        icon: '',
-        class: '',
-        extralink: false,
-        submenu: []
-      },
-      {
-        path: '/apps/taskboard',
-        title: '',
-        icon: 'mdi mdi-bulletin-board',
-        class: '',
-        extralink: false,
-        submenu: []
-      }
     ]
   },
   {

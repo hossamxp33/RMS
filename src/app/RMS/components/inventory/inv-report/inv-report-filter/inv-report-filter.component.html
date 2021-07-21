@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <form [formGroup]="form" style="width: 100%;">
+                <div class="row">
+                    <div class="col-md-3">
+                        <nz-select 
+                            style="width: 100%;" 
+                            [(ngModel)]="selectedValue"
+                            nzShowSearch 
+                            nzAllowClear 
+                            nzPlaceHolder="Filter By"
+                            formControlName="category_id"
+                            [nzSize]="'large'">
+                            <nz-option 
+                                *ngFor="let c of categories" 
+                                [nzLabel]="c.name" 
+                                [nzValue]="c.id"></nz-option>
+                        </nz-select>                   
+                    </div>
+                    <div class="col-md-3">
+                        <nz-date-picker 
+                            formControlName="fromdate" 
+                            [nzSize]="'large'" 
+                            nzPlaceHolder="From"
+                            nzAllowClear="true" ></nz-date-picker>
+                    </div>
+                    <div class="col-md-3">
+                        <nz-date-picker 
+                            formControlName="todate" 
+                            [nzSize]="'large'"
+                            nzAllowClear="true" 
+                            nzPlaceHolder="To"></nz-date-picker>
+                    </div>
+                    <div class="col-md-3">
+                        <button 
+                            class="btn btn-block btn-info" 
+                            matRipple 
+                            nz-button
+                            [nzSize]="'large'"
+                            (click)="filter()">Filter</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

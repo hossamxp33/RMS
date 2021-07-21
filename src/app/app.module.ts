@@ -42,6 +42,7 @@ import { UsersService } from 'src/services/users/users.service';
 import { OrdersService } from 'src/services/orders/orders.service';
 import { ExpensessService } from 'src/services/expensess/expensess.service';
 import { StaffService } from 'src/services/staff/staff.service';
+import { PublicLoaderComponent } from './RMS/components/shared/public-loader/public-loader.component';
 
 registerLocaleData(en);
 
@@ -60,7 +61,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BlankComponent,
     NavigationComponent,
     BreadcrumbComponent,
-    SidebarComponent
+    SidebarComponent,
+    PublicLoaderComponent
   ],
   imports: [
     CommonModule,

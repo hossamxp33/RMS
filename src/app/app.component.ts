@@ -12,7 +12,7 @@ export class AppComponent implements OnDestroy {
 
     constructor(private slimLoader: SlimLoadingBarService, private router: Router) {
         // Listen the navigation events to start or complete the slim bar loading
-        this.sub = this.router.events.subscribe(event => {
+        /*this.sub = this.router.events.subscribe(event => {
             if (event instanceof NavigationStart) {
                 this.slimLoader.start();
             } else if (event instanceof NavigationEnd ||
@@ -22,7 +22,7 @@ export class AppComponent implements OnDestroy {
             }
         }, (error: any) => {
             this.slimLoader.complete();
-        });
+        });*/      
     }
 
     ngOnDestroy(): any {
