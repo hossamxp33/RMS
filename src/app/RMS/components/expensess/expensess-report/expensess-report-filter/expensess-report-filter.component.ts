@@ -13,8 +13,7 @@ export class ExpensessReportFilterComponent implements OnInit {
   @Output('data') data: EventEmitter<any> = new EventEmitter();
   
 
-  startDate: any = '';
-  endDate: any = '';
+  date: any = '';
 
   constructor(private service: ExpensessService, private generic: GenericService) { }
 
@@ -26,8 +25,8 @@ export class ExpensessReportFilterComponent implements OnInit {
 
     const formData = new FormData(); 
 
-    if (type == 'startDate') val = this.generic.formatDate(this.startDate, 'filter');
-    if (type == 'endDate') val = this.generic.formatDate(this.endDate, 'filter');
+    if (type == 'date') val = this.generic.formatDate(this.date[0], 'filter');
+    if (type == 'date') val += ` ${this.generic.formatDate(this.date[1], 'filter')}`
 
     formData.append(filter, val);    
 

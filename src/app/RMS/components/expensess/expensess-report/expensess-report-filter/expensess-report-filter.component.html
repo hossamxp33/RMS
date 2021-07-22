@@ -17,23 +17,14 @@
                             [nzValue]="c.id"></nz-option>
                     </nz-select>                     
                 </div>
-                <div class="col">
-                    <nz-date-picker
+                <div class="col" style="direction: ltr;">
+                    <nz-range-picker 
                         [nzSize]="'large'"
                         nzAllowClear="true" 
-                        nzPlaceHolder="start Date"
-                        [(ngModel)]="startDate"
-                        (nzOnOpenChange)="filter('[Filter][created][_start_]', $event, 'startDate')"></nz-date-picker>
-                </div>
-                <div class="col">
-                    <nz-date-picker
-                        [nzSize]="'large'"
-                        nzAllowClear="true" 
-                        nzPlaceHolder="End Date"
-                        [(ngModel)]="endDate"
-                        (nzOnOpenChange)="filter('[Filter][created][_start_]', $event, 'endDate')"></nz-date-picker>
-                </div>
-            </div>
+                        [(ngModel)]="date" 
+                        (ngModelChange)="filter('Filter[created][_start_] Filter[created][_end_]', $event, 'date')"></nz-range-picker>
+                </div>                
+            </div>       
         </div>
     </div>
 </div>
