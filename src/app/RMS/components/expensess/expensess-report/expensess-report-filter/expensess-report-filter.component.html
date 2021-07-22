@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="row">
+                <div class="col">
+                    <nz-select 
+                        style="width: 100%;" 
+                        [(ngModel)]="selectedUser"
+                        nzShowSearch 
+                        nzAllowClear 
+                        nzPlaceHolder="Filter By Category"
+                        [nzSize]="'large'"
+                        (ngModelChange)="filter('[Filter][category_id]', $event)">
+                        <nz-option 
+                            *ngFor="let c of categories" 
+                            [nzLabel]="c.name" 
+                            [nzValue]="c.id"></nz-option>
+                    </nz-select>                     
+                </div>
+                <div class="col">
+                    <nz-date-picker
+                        [nzSize]="'large'"
+                        nzAllowClear="true" 
+                        nzPlaceHolder="start Date"
+                        [(ngModel)]="startDate"
+                        (nzOnOpenChange)="filter('[Filter][created][_start_]', $event, 'startDate')"></nz-date-picker>
+                </div>
+                <div class="col">
+                    <nz-date-picker
+                        [nzSize]="'large'"
+                        nzAllowClear="true" 
+                        nzPlaceHolder="End Date"
+                        [(ngModel)]="endDate"
+                        (nzOnOpenChange)="filter('[Filter][created][_start_]', $event, 'endDate')"></nz-date-picker>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

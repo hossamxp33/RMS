@@ -8,6 +8,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 })
 export class InvReportTblComponent implements OnInit, OnChanges {
   @Input('data') data: any[] = [];
+  @Input('storeRep') storeRep: any[] = [];
   @Input('loading') loading: boolean = false;
 
   header: any[] = [
@@ -23,9 +24,23 @@ export class InvReportTblComponent implements OnInit, OnChanges {
     'اجمالي المتبقي (نقدي)',
   ];
 
+  stores: any = [];
+  isVisible: boolean = false;
+  
+  popupHeader: any[] = [
+    '#',
+    'الكمية',
+    'السعر',
+  ];  
+
   constructor(private helper: InvHelper) { }
 
   ngOnInit() {
+  }
+
+  getStores(stores: any[]) {
+    (stores.length == 0) ? this.stores = [] : this.stores = this.helper.createStores(stores);
+    this.isVisible = true;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -38,6 +53,9 @@ export class InvReportTblComponent implements OnInit, OnChanges {
             break;
           case 'loading' : 
             this.loading = changes.loading.currentValue;
+            break;
+          case 'storeRep' : 
+            this.storeRep = changes.storeRep.currentValue;
             break;
         }
       }

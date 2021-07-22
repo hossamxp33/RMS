@@ -18,6 +18,10 @@ export class ProductsService {
       )
   }
 
+  filterInv(filter) {
+    return this.http.post(`${environment.endpoint}/products/reportproducts.json`, filter).toPromise();
+  }  
+
   getProCost() : Observable<any> {
     return this.http.get(`${environment.endpoint}/products/getcostofproductinweekandmonth.json`)
       .pipe(
@@ -25,7 +29,8 @@ export class ProductsService {
       )
   }
 
-  filterInv(filter) {
-    return this.http.post(`${environment.endpoint}/products/reportproducts.json`, filter).toPromise();
-  }
+  filterProCost(filter) {
+    return this.http.post(`${environment.endpoint}/products/getcostofproductinweekandmonth.json`, filter).toPromise();
+  }  
+
 }

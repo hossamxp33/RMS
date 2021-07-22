@@ -1,12 +1,6 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-body">
-                <h4>
-                    اجمالي تكلفة كل المكونات : <label class="badge badge-danger">{{totCost}}</label>
-                </h4> 
-            </div>
-
             <div class="table-responsive">
                 <nz-table 
                     #headerTable  
@@ -26,12 +20,10 @@
                     </thead>
                     <tbody>
                         <tr 
-                            *ngFor="let allData of headerTable.data"
-                            style="cursor: pointer; direction: ltr;"
-                            (click)="getRecipes(allData.itemreceipes)">
+                            *ngFor="let allData of headerTable.data; let i = index" 
+                            style="cursor: pointer; direction: ltr;">
                             <td 
-                                *ngFor="let d of allData | render" 
-                                [class.d-none]="d == 'itemreceipes'">{{allData[d]}}</td>
+                                *ngFor="let d of allData | render">{{allData[d]}}</td>
                         </tr>
                     </tbody>
                 </nz-table>
@@ -40,11 +32,3 @@
         </div>
     </div>
 </div>
-
-<app-popup-details
-    [data]="itemRecipes"
-    [title]="'المكونات'"
-    [header]="popupHeader"
-    [isVisible]="isVisible"
-    (closeDV)="isVisible = $event"
-></app-popup-details>

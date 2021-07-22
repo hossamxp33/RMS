@@ -21,9 +21,25 @@ export class CostReportTblComponent implements OnInit, OnChanges {
 
   totCost: any = 0;
 
+  itemRecipes: any = [];
+  isVisible: boolean = false;
+  
+  popupHeader: any[] = [
+    '#',
+    'العنصر',
+    'الكمية',
+    'العدد',
+    'التكلفة',
+  ];  
+
   constructor(private helper: CostHelper) { }
 
   ngOnInit() {
+  }
+
+  getRecipes(receipes: any[]) {    
+    (receipes.length == 0) ? this.itemRecipes = [] : this.itemRecipes = this.helper.createRecipes(receipes);
+    this.isVisible = true;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -32,8 +48,8 @@ export class CostReportTblComponent implements OnInit, OnChanges {
       if (changes.hasOwnProperty(prop)) {
         switch(prop) {
           case 'data' : 
-            this.data = this.helper.costObject(changes.data.currentValue);
-            this.totCost = this.data.map(val => val["totalCost"]).reduce((prev, next) => prev + next).toFixed(2)
+            this.data = (Boolean(changes.data.currentValue.length)) ? this.helper.costObject(changes.data.currentValue) : [];
+            this.totCost = (Boolean(changes.data.currentValue.length)) ? this.data.map(val => parseFloat(val["totalSum"])).reduce((prev, next) => prev + next).toFixed(2) : 0;
             break;
           case 'loading' : 
             this.loading = changes.loading.currentValue;

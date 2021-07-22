@@ -17,12 +17,25 @@ export class InvHelper {
             TotalWithdrawalOfProduct: val["TotalWithdrawalOfProduct"],
             TotalCountOfstockOfProduct: val["TotalCountOfstockOfProduct"],
             TotalstockOfProduct: val["TotalstockOfProduct"],
+            stores: val["stores"]
           }
     
           inventory = [...inventory, obj];
         });
 
         return inventory;
-      }
+    }
+
+    createStores(stores: any[]) {
+      const s = stores.map(val => {
+        return {
+          id: val["id"],
+          amount: val["amount"],
+          price: val["price"],          
+        }
+      });
+
+      return s;
+    }
 
 }

@@ -1,20 +1,20 @@
 import { Routes } from "@angular/router";
 import { ItemsReportsResolver } from "src/app/authentication/login/services/items-reports.resolver";
-import { CostReportComponent } from "./cost-report/cost-report.component";
-import { CostReportResolver } from "./cost-report/services/cost-report.resolver";
+import { ExpensessReportComponent } from "./expensess-report/expensess-report.component";
+import { ExpensessReportResolver } from "./expensess-report/services/expensess-report.resolver";
 
-export const CostRoutes: Routes = [
+export const ExpensessRoutes: Routes = [
     {
         path: '',
         children: [
             {
                 path: 'reports',
-                component: CostReportComponent,
+                component: ExpensessReportComponent,
                 data: {
-                    title: 'تقرير التكلفة',
+                    title: 'تقرير المصروفات',
                 },                
                 resolve: {
-                    cost: CostReportResolver,
+                    expens: ExpensessReportResolver,
                     ItemsReports: ItemsReportsResolver,
                 }                
             }

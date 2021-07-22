@@ -1,4 +1,33 @@
 <div class="row">
+    <div class="col-md-4">
+        <app-stats-info
+            [infoClass]="'btn-success'"
+            [infoIcon]="'mdi mdi-currency-usd'"
+            [infoTxt]="'اجمالي الداخل (نقدي)'"
+            [infoTotal]="storeRep.TotalCreditOfProduct"
+        ></app-stats-info>
+    </div>
+
+    <div class="col-md-4">
+        <app-stats-info
+            [infoClass]="'btn-danger'"
+            [infoIcon]="'mdi mdi-currency-usd'"
+            [infoTxt]="'اجمالي المسحوب (نقدي)'"
+            [infoTotal]="storeRep.TotalWithdrawalOfProduct"
+        ></app-stats-info>
+    </div>  
+
+    <div class="col-md-4">
+        <app-stats-info
+            [infoClass]="'btn-warning'"
+            [infoIcon]="'mdi mdi-currency-usd'"
+            [infoTxt]="'اجمالي المتبقي (نقدي)'"
+            [infoTotal]="storeRep.TotalstockOfProduct"
+        ></app-stats-info>
+    </div>    
+</div>
+
+<div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="table-responsive">
@@ -19,11 +48,13 @@
                       </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let allData of headerTable.data; let i = index" >
+                        <tr 
+                            *ngFor="let allData of headerTable.data; let i = index" 
+                            style="cursor: pointer; direction: ltr;" 
+                            (click)="getStores(allData.stores)">
                             <td 
                                 *ngFor="let d of allData | render" 
-                                class="hide-long-text"
-                                [class.text-center]="allData[d]">{{allData[d]}}</td>
+                                [class.d-none]="d == 'stores'">{{allData[d]}}</td>
                         </tr>
                     </tbody>
                 </nz-table>
@@ -32,3 +63,11 @@
         </div>
     </div>
 </div>
+
+<app-popup-details
+    [data]="stores"
+    [title]="'المخزن'"
+    [header]="popupHeader"
+    [isVisible]="isVisible"
+    (closeDV)="isVisible = $event"
+></app-popup-details>

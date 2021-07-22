@@ -1,15 +1,15 @@
 <!-- ============================================================== -->
-<!-- Start Inv Filter -->
+<!-- Start Expensess Filter -->
 <!-- ============================================================== -->
-<app-inv-report-filter [categories]="itemsCategories$ | async" (loading)="loading = $event" (data)="inventory = $event" (storeRep)="storeRep = $event"></app-inv-report-filter>
+<app-expensess-report-filter [categories]="itemsCategories$ | async" (loading)="loading = $event" (data)="expensess = $event"></app-expensess-report-filter>
 <!-- ============================================================== -->
-<!-- End Inv Filter -->
+<!-- End Expensess Filter -->
 <!-- ============================================================== -->
 
 <!-- ============================================================== -->
-<!-- Start Inv Data -->
+<!-- Start Expensess Data -->
 <!-- ============================================================== -->
-<app-inv-report-tbl [data]="inventory" [loading]="loading" [storeRep]="storeRep"></app-inv-report-tbl>
+<app-expensess-report-tbl [data]="expensess" [loading]="loading"></app-expensess-report-tbl>
 <!-- ============================================================== -->
-<!-- End Inv Data -->
+<!-- End Expensess Data -->
 <!-- ============================================================== -->

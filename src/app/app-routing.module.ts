@@ -23,6 +23,10 @@ export const Approutes: Routes = [
         loadChildren: () => import('./RMS/components/costs/cost.module').then(m => m.CostsModule)
       },
       {
+        path: 'expensess',
+        loadChildren: () => import('./RMS/components/expensess/expensess.module').then(m => m.ExpensessModule)
+      },
+      {
         path: 'starter',
         loadChildren: () => import('./starter/starter.module').then(m => m.StarterModule)
       },

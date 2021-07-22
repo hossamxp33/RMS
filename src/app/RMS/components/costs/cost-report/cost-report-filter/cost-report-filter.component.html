@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <form [formGroup]="form" style="width: 100%;">
+                <div class="row">
+                    <div class="col">
+                        <nz-select 
+                            style="width: 100%;" 
+                            [(ngModel)]="selectedValue"
+                            nzShowSearch 
+                            nzAllowClear 
+                            nzPlaceHolder="Filter By Category"
+                            formControlName="category_id"
+                            [nzSize]="'large'">
+                            <nz-option 
+                                *ngFor="let c of categories" 
+                                [nzLabel]="c.name" 
+                                [nzValue]="c.id"></nz-option>
+                        </nz-select>                   
+                    </div>
+                    <div class="col">
+                        <nz-select 
+                            style="width: 100%;" 
+                            [(ngModel)]="selectedPro"
+                            nzShowSearch 
+                            nzAllowClear 
+                            nzPlaceHolder="Filter By Product"
+                            formControlName="product_id"
+                            [nzSize]="'large'">
+                            <nz-option 
+                                *ngFor="let p of products" 
+                                [nzLabel]="p[1]" 
+                                [nzValue]="p[0]"></nz-option>
+                        </nz-select>                   
+                    </div>
+                    <div class="col">
+                        <nz-date-picker 
+                            formControlName="fromdate" 
+                            [nzSize]="'large'" 
+                            nzPlaceHolder="From"
+                            nzAllowClear="true" ></nz-date-picker>
+                    </div>
+                    <div class="col">
+                        <nz-date-picker 
+                            formControlName="todate" 
+                            [nzSize]="'large'"
+                            nzAllowClear="true" 
+                            nzPlaceHolder="To"></nz-date-picker>
+                    </div>
+                    <div class="col">
+                        <button 
+                            class="btn btn-block btn-info" 
+                            matRipple 
+                            nz-button
+                            [nzSize]="'large'"
+                            (click)="filter()">Filter</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

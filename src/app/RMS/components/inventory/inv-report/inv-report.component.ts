@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AppState } from 'src/app/apps/email/app.state';
+import { AppState } from 'src/app/reducers';
 import { selectItemsReportsCategories } from 'src/app/RMS/store/items-reports/items-reports.selectors';
 
 @Component({
@@ -12,6 +12,7 @@ import { selectItemsReportsCategories } from 'src/app/RMS/store/items-reports/it
 })
 export class InvReportComponent implements OnInit {
   inventory: any[] = [];
+  storeRep: any = {};
   loading: boolean = false;
 
   itemsCategories$: Observable<any>;
@@ -22,6 +23,7 @@ export class InvReportComponent implements OnInit {
     this.route.data.subscribe(
       res => {
         this.inventory = res.inv.orderdetails;
+        this.storeRep = res.inv.storetotalreport[0];
       }
     );
 

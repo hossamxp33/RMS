@@ -137,7 +137,7 @@ export class Dashboard1Component implements OnInit {
     });
 
     let net = loan.map(val => {
-      return {...val, net: val["SumTotal"] - val["expense"]}
+      return {...val, net: val["SumTotal"] - (val["expense"] + val["loan"]) }
     })
 
     net.forEach((val, index) => {

@@ -14,7 +14,7 @@ export class StatsInfoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.infoTotal = (Boolean(this.infoTotal)) ? this.infoTotal.toFixed(2) : 0;
+    this.infoTotal = (Boolean(this.infoTotal)) ? parseFloat(this.infoTotal).toFixed(2) : 0;
   }
 
 }

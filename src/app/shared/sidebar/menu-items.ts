@@ -54,13 +54,30 @@ export const ROUTES: RouteInfo[] = [
   {
     path: '',
     title: 'التكلفة',
-    icon: 'fas fa-dollar-sign',
+    icon: 'mdi mdi-currency-usd',
     class: 'has-arrow',
     extralink: false,
     submenu: [
       {
         path: '/cost/reports',
         title: 'تقارير التكلفة',
+        icon: '',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+    ]
+  },
+  {
+    path: '',
+    title: 'المصروفات',
+    icon: 'fas fa-money-bill-alt',
+    class: 'has-arrow',
+    extralink: false,
+    submenu: [
+      {
+        path: '/expensess/reports',
+        title: 'تقارير المصروفات',
         icon: '',
         class: '',
         extralink: false,
