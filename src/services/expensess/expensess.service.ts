@@ -15,15 +15,15 @@ export class ExpensessService {
     return this.http.post(`${environment.endpoint}/Expenses/getDailyExpensesDetailsByDate.json`, date)
   }
 
-  getExpensesReport() : Observable<any> {
-    return this.http.get(`${environment.endpoint}/Expenses/getListExpensesDetailsByCategory.json`)
+  getExpensesReport(page) : Observable<any> {
+    return this.http.get(`${environment.endpoint}/Expenses/getListExpensesDetailsByCategory.json?page=${page}`)
       .pipe(
         shareReplay()
       )
   }
 
   filterExpensesReport(filter) {
-    return this.http.post(`${environment.endpoint}/Expenses/getListExpensesDetailsByCategory.json`, filter).toPromise()
+    return this.http.post(`http://wokhouse.codesroots.com/api/Expenses/getListExpensesDetailsByCategory.json`, filter).toPromise()
   }
 
 }

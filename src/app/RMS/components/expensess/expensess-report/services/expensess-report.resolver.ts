@@ -10,6 +10,6 @@ export class ExpensessReportResolver implements Resolve<any> {
     constructor(private services: ExpensessService) {}
     
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<any>{
-        return this.services.getExpensesReport();
+        return this.services.getExpensesReport(1);
     }
 }

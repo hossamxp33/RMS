@@ -1,3 +1,4 @@
+import { ExpensessService } from 'src/services/expensess/expensess.service';
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ExpensessHelper } from '../../classes/expensess-helper';
 
@@ -8,6 +9,7 @@ import { ExpensessHelper } from '../../classes/expensess-helper';
 })
 export class ExpensessReportTblComponent implements OnInit, OnChanges {
   @Input('data') data: any[] = [];
+  @Input('pages') pages: any = {};
   @Input('loading') loading: boolean = false;
 
   header: any[] = [
@@ -19,9 +21,16 @@ export class ExpensessReportTblComponent implements OnInit, OnChanges {
     'ديون',
   ];
   
-  constructor(private helper: ExpensessHelper) { }
+  constructor(private helper: ExpensessHelper, private service: ExpensessService) { }
 
   ngOnInit() {
+  }
+
+  async onPageChange(page) {
+    this.loading = true;
+    const data: any = await this.service.getExpensesReport(page).toPromise();
+    this.data = this.helper.shapeExpensData(data.data)
+    this.loading = false;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -30,10 +39,13 @@ export class ExpensessReportTblComponent implements OnInit, OnChanges {
       if (changes.hasOwnProperty(prop)) {
         switch(prop) {
           case 'data' : 
-            this.data = this.helper.shapeExpensData(changes.data.currentValue);            
+            this.data = this.helper.shapeExpensData(changes.data.currentValue);
             break;
           case 'loading' : 
             this.loading = changes.loading.currentValue;
+            break;
+          case 'pages' : 
+            this.pages = changes.pages.currentValue;
             break;
         }
       }

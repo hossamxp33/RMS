@@ -1,7 +1,7 @@
 <!-- ============================================================== -->
 <!-- Start Expensess Filter -->
 <!-- ============================================================== -->
-<app-expensess-report-filter [categories]="itemsCategories$ | async" (loading)="loading = $event" (data)="expensess = $event"></app-expensess-report-filter>
+<app-expensess-report-filter [categories]="itemsCategories$ | async" (loading)="loading = $event" (data)="expensess = $event" (pages)="pages = $event"></app-expensess-report-filter>
 <!-- ============================================================== -->
 <!-- End Expensess Filter -->
 <!-- ============================================================== -->
@@ -9,7 +9,7 @@
 <!-- ============================================================== -->
 <!-- Start Expensess Data -->
 <!-- ============================================================== -->
-<app-expensess-report-tbl [data]="expensess" [loading]="loading"></app-expensess-report-tbl>
+<app-expensess-report-tbl [data]="expensess" [pages]="pages" [loading]="loading"></app-expensess-report-tbl>
 <!-- ============================================================== -->
 <!-- End Expensess Data -->
 <!-- ============================================================== -->

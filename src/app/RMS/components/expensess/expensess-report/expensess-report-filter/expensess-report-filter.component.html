@@ -10,7 +10,7 @@
                         nzAllowClear 
                         nzPlaceHolder="Filter By Category"
                         [nzSize]="'large'"
-                        (ngModelChange)="filter('[Filter][category_id]', $event)">
+                        (ngModelChange)="filter('Filter[category_id]', $event)">
                         <nz-option 
                             *ngFor="let c of categories" 
                             [nzLabel]="c.name" 

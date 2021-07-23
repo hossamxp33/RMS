@@ -11,6 +11,7 @@ export class ExpensessReportFilterComponent implements OnInit {
   @Input('categories') categories: any = [];
   @Output('loading') loading: EventEmitter<any> = new EventEmitter();
   @Output('data') data: EventEmitter<any> = new EventEmitter();
+  @Output('pages') pages: EventEmitter<any> = new EventEmitter();
   
 
   date: any = '';
@@ -20,22 +21,29 @@ export class ExpensessReportFilterComponent implements OnInit {
   ngOnInit() {
   }
 
-  async filter(filter, val, type = '') {
+  async filter(filter, val, type = '') {    
     if (val === true) return;
 
     const formData = new FormData(); 
 
-    if (type == 'date') val = this.generic.formatDate(this.date[0], 'filter');
-    if (type == 'date') val += ` ${this.generic.formatDate(this.date[1], 'filter')}`
+    if (type == 'date') {
+      val = this.generic.formatDate(this.date[0], 'filter');
+      formData.append('Filter[created][__start__]', val);
+    }
 
-    formData.append(filter, val);    
+    
+    if (type == 'date') {
+      val = this.generic.formatDate(this.date[1], 'filter');
+      formData.append('Filter[created][__end__]', val);
+    } else formData.append(filter, val);
 
     this.loading.emit(true);
 
-    const data = await this.service.filterExpensesReport(formData); 
-    
-    this.data.emit(data["orderdetails"])
+    const data: any = await this.service.filterExpensesReport(formData); 
+
+    this.data.emit(data.data);
+    this.pages.emit(data.pagination);
     this.loading.emit(false);
-  }  
+  } 
 
 }

@@ -3,12 +3,14 @@
         <div class="card">
             <div class="table-responsive">
                 <nz-table 
-                    #headerTable  
-                    nzShowPagination
+                    [nzFrontPagination]="false"
                     [nzData]="data" 
-                    [nzPageSize]="5" 
                     [nzLoading]="loading"
+                    [nzTotal]="pages.page_count * 20"
+                    [nzPageSize]="20"
+                    [nzPageIndex]="1"
                     [nzScroll]="{ x: '240px' }"
+                    (nzPageIndexChange)="onPageChange($event)"
                     class="table forms-table table-striped table-bordered"
                     *ngIf="data.length >= 1">
                     <thead>
@@ -20,7 +22,7 @@
                     </thead>
                     <tbody>
                         <tr 
-                            *ngFor="let allData of headerTable.data; let i = index" 
+                            *ngFor="let allData of data; let i = index" 
                             style="cursor: pointer; direction: ltr;">
                             <td 
                                 *ngFor="let d of allData | render">{{allData[d]}}</td>

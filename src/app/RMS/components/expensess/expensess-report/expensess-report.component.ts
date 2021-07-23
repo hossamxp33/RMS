@@ -13,6 +13,7 @@ import { selectItemsReportsCategories } from 'src/app/RMS/store/items-reports/it
 export class ExpensessReportComponent implements OnInit {
   expensess: any[] = [];
   loading: boolean = false;
+  pages: any = {};
 
   itemsCategories$: Observable<any>;
   
@@ -21,7 +22,8 @@ export class ExpensessReportComponent implements OnInit {
   ngOnInit() {
     this.router.data.subscribe(
       res => {
-        this.expensess = res.expens.orderdetails
+        this.expensess = res.expens.data;
+        this.pages = res.expens.pagination;
       }
     );
 
