@@ -30,6 +30,7 @@ export class CostReportTblComponent implements OnInit, OnChanges {
     'الكمية',
     'العدد',
     'التكلفة',
+    'الوحدة',
   ];  
 
   constructor(private helper: CostHelper) { }

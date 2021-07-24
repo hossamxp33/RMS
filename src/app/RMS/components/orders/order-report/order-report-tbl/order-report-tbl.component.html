@@ -23,16 +23,18 @@
                     <tbody>
                         <tr 
                             *ngFor="let allData of data; let i = index" 
-                            style="cursor: pointer; direction: ltr;">
+                            style="cursor: pointer; direction: ltr;"
+                            (click)="getOrderDetails(allData.orderdetails)">
                             <ng-container *ngFor="let d of allData | render">
-                                <td *ngIf="(d != 'unpayment' && d != 'modified')">{{allData[d]}}</td>
-                                <td *ngIf="(d == 'unpayment' && d != 'modified')">
-                                    <ng-container *ngIf="allData[d] == 0">مصاريف</ng-container>
-                                    <ng-container *ngIf="allData[d] == 1">مبلغ مؤجل</ng-container>
-                                    <ng-container *ngIf="allData[d] == 2">مبلغ مديونة</ng-container>                                    
-                                </td>
-                                <td *ngIf="d == 'modified'">{{allData[d] | date}}</td>
+                                <td 
+                                    *ngIf="d != 'modified'"
+                                    [class.d-none]="d == 'orderdetails'">{{allData[d]}}</td>
                             </ng-container>
+                            <ng-container *ngFor="let d of allData | render">
+                                <td 
+                                    *ngIf="d == 'modified'"                                    
+                                    [class.d-none]="d == 'orderdetails'">{{allData[d] | date}}</td>
+                            </ng-container>                            
                         </tr>
                     </tbody>
                 </nz-table>
@@ -41,3 +43,11 @@
         </div>
     </div>
 </div>
+
+<app-popup-details
+    [data]="details"
+    [title]="'الطلبات'"
+    [header]="popupHeader"
+    [isVisible]="isVisible"
+    (closeDV)="isVisible = $event"
+></app-popup-details>

@@ -27,11 +27,13 @@ export class InvHelper {
     }
 
     createStores(stores: any[]) {
+      console.log(stores)
       const s = stores.map(val => {
         return {
           id: val["id"],
           amount: val["amount"],
-          price: val["price"],          
+          price: val["price"],  
+          modified: val['modified']        
         }
       });
 

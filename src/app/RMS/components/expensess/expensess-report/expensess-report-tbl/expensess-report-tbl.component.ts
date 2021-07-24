@@ -14,11 +14,13 @@ export class ExpensessReportTblComponent implements OnInit, OnChanges {
 
   header: any[] = [
     '#',
-    'القسم',
+    'القسم',    
     'المنتج',
+    'قسم المصروفات',
     'المصروفات',
     'اخر المدفوعات',
     'ديون',
+    'التاريخ',
   ];
   
   constructor(private helper: ExpensessHelper, private service: ExpensessService) { }

@@ -31,6 +31,7 @@ export class InvReportTblComponent implements OnInit, OnChanges {
     '#',
     'الكمية',
     'السعر',
+    'التاريخ',
   ];  
 
   constructor(private helper: InvHelper) { }

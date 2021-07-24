@@ -40,9 +40,9 @@ export class InvReportFilterComponent implements OnInit {
     this.loading.emit(true);
 
     const data: any = await this.service.filterInv(filters); 
-    this.data.emit(data.orderdetails);
-    this.storeRep.emit(data.storetotalreport);
 
+    this.data.emit(data.orderdetails);
+    this.storeRep.emit(data.storetotalreport[0]);      
     this.loading.emit(false);
   }  
 

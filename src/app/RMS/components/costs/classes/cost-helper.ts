@@ -30,6 +30,7 @@ export class CostHelper {
         amount: val["amount"],
         sum: val["sum"],
         totalcost: val["totalcost"],
+        unit: val["unit"],
       }
     });
 
