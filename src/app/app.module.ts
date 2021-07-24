@@ -43,6 +43,7 @@ import { OrdersService } from 'src/services/orders/orders.service';
 import { ExpensessService } from 'src/services/expensess/expensess.service';
 import { StaffService } from 'src/services/staff/staff.service';
 import { PublicLoaderComponent } from './RMS/components/shared/public-loader/public-loader.component';
+import { ItemsService } from 'src/services/items/items.service';
 
 registerLocaleData(en);
 
@@ -111,7 +112,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     UsersService,
     OrdersService,
     ExpensessService,
-    StaffService
+    StaffService,
+    ItemsService
   ],
   bootstrap: [AppComponent]
 })

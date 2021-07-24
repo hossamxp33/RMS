@@ -104,30 +104,14 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: '',
-    title: 'Cards',
-    icon: 'icon-Folder-Add',
+    title: 'الاطباق',
+    icon: 'mdi mdi-format-list-bulleted',
     class: 'has-arrow',
     extralink: false,
     submenu: [
       {
-        path: '/cards/basiccards',
-        title: 'Basic Cards',
-        icon: '',
-        class: '',
-        extralink: false,
-        submenu: []
-      },
-      {
-        path: '/cards/customcards',
-        title: 'Custom Cards',
-        icon: '',
-        class: '',
-        extralink: false,
-        submenu: []
-      },
-      {
-        path: '/cards/weathercards',
-        title: 'Weather Cards',
+        path: '/items/not-having-recipy',
+        title: 'غير مسجل بها مكونات و تكلفة',
         icon: '',
         class: '',
         extralink: false,
@@ -137,43 +121,19 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: '',
-    title: 'Extra Components',
-    icon: 'icon-Idea-5',
+    title: 'المنتجات',
+    icon: 'fas fa-box-open',
     class: 'has-arrow',
     extralink: false,
     submenu: [
       {
-        path: '/extra-component/toastr',
-        title: 'Toastr',
+        path: '/products/notifications',
+        title: 'منتجات اوشكت على الانتهاء',
         icon: '',
         class: '',
         extralink: false,
         submenu: []
       },
-      {
-        path: '/extra-component/upload',
-        title: 'File Upload',
-        icon: '',
-        class: '',
-        extralink: false,
-        submenu: []
-      },
-      {
-        path: '/extra-component/editor',
-        title: 'Editor',
-        icon: '',
-        class: '',
-        extralink: false,
-        submenu: []
-      },
-      {
-        path: '/extra-component/dragndrop',
-        title: 'Drag n Drop',
-        icon: '',
-        class: '',
-        extralink: false,
-        submenu: []
-      }
     ]
   },
   {

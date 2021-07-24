@@ -31,6 +31,13 @@ export class ProductsService {
 
   filterProCost(filter) {
     return this.http.post(`${environment.endpoint}/products/getcostofproductinweekandmonth.json`, filter).toPromise();
-  }  
+  } 
+  
+  productNotifications() : Observable<any> {
+    return this.http.get(`${environment.endpoint}/products/notifications.json`)
+      .pipe(
+        shareReplay()
+      )
+  }
 
 }

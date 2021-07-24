@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="table-responsive">
+                <nz-table 
+                    #headerTable  
+                    nzShowPagination
+                    [nzData]="data" 
+                    [nzPageSize]="20" 
+                    [nzLoading]="loading"
+                    [nzScroll]="{ x: '240px' }"
+                    class="table forms-table table-striped table-bordered"
+                    *ngIf="data.length >= 1">
+                    <thead>
+                      <tr class="bg-light"> 
+                        <th *ngFor="let head of header; let i = index">
+                            {{head}}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let allData of headerTable.data">
+                            <ng-container *ngFor="let d of allData | render">                            
+                                <td *ngIf="(d != 'photo' && d != 'modified')" style="vertical-align: middle;">{{allData[d]}}</td>
+                                <td *ngIf="d == 'photo'" style="vertical-align: middle;">
+                                    <img style="height: 100px; width: 100px; border-radius: 50%;" [src]="allData[d]" alt="item" />
+                                </td>
+                                <td *ngIf="d == 'modified'" style="vertical-align: middle;">{{allData[d] | date}}</td>
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                </nz-table>
+                <nz-table [nzData]="data" *ngIf="data.length == 0"></nz-table>              
+            </div>
+        </div>
+    </div>
+</div>
