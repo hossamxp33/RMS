@@ -12,7 +12,7 @@ export class ExpensessHelper {
             expenses_category: (Boolean(val["expenses_category"])) ? val["expenses_category"]["name"] : '',
             totalproduct: val["totalproduct"],
             lastpayments: val["lastpayments"],
-            unpayment: val["unpayment"],
+            payment_type: val["payment_type"],
             modified: val["modified"],
           }
     

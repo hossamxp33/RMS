@@ -22,7 +22,6 @@ export class OrderReportComponent implements OnInit {
     this.router.data.subscribe(
       res => {
         this.orders = res.orders.data;
-        console.log(res.orders)
         this.pages = res.orders.pagination;
         this.marketers = Object.entries(res.orders.marketers)
         this.paymenttypes = Object.entries(res.orders.paymenttypes)

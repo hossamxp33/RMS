@@ -25,13 +25,13 @@
                             *ngFor="let allData of data; let i = index" 
                             style="cursor: pointer; direction: ltr;">
                             <ng-container *ngFor="let d of allData | render">
-                                <td *ngIf="(d != 'unpayment' && d != 'modified')">{{allData[d]}}</td>
-                                <td *ngIf="(d == 'unpayment' && d != 'modified')">
-                                    <ng-container *ngIf="allData[d] == 0">مصاريف</ng-container>
-                                    <ng-container *ngIf="allData[d] == 1">مبلغ مؤجل</ng-container>
-                                    <ng-container *ngIf="allData[d] == 2">مبلغ مديونة</ng-container>                                    
+                                <td *ngIf="(d != 'payment_type' && d != 'modified')">{{allData[d]}}</td>
+                                <td *ngIf="(d == 'payment_type' && d != 'modified')">
+                                    <ng-container *ngIf="allData[d] == 1">مصاريف</ng-container>
+                                    <ng-container *ngIf="allData[d] == 2">مبلغ مؤجل</ng-container>
+                                    <ng-container *ngIf="allData[d] == 3">مبلغ مديونة</ng-container>                                   
                                 </td>
-                                <td *ngIf="d == 'modified'">{{allData[d] | date}}</td>
+                                <td *ngIf="d == 'modified'">{{allData[d] | date:'medium'}}</td>
                             </ng-container>
                         </tr>
                     </tbody>

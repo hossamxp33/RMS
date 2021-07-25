@@ -23,6 +23,7 @@ export class ExpensessReportComponent implements OnInit {
     this.router.data.subscribe(
       res => {
         this.expensess = res.expens.data;
+        console.log(res.expens)
         this.pages = res.expens.pagination;
       }
     );

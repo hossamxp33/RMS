@@ -29,9 +29,10 @@
                             *ngFor="let allData of headerTable.data"
                             style="cursor: pointer; direction: ltr;"
                             (click)="getRecipes(allData.itemreceipes)">
-                            <td 
-                                *ngFor="let d of allData | render" 
-                                [class.d-none]="d == 'itemreceipes'">{{allData[d]}}</td>
+                            <ng-container *ngFor="let d of allData | render">
+                                <td *ngIf="d != 'modified'" [class.d-none]="d == 'itemreceipes'">{{allData[d]}}</td>
+                                <td *ngIf="d == 'modified'">{{allData[d] | date:'medium'}}</td>
+                            </ng-container>                            
                         </tr>
                     </tbody>
                 </nz-table>

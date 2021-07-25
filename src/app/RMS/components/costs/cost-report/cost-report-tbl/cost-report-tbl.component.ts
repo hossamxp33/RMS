@@ -16,7 +16,8 @@ export class CostReportTblComponent implements OnInit, OnChanges {
     'القسم',
     'المستهلك',
     'الاستهلاك قبل الهالك',
-    'مجموع التكلفة',
+    'الوحدة',
+    'التاريخ',
   ]; 
 
   totCost: any = 0;

@@ -26,4 +26,8 @@ export class OrdersService {
     return this.http.post(`http://wokhouse.codesroots.com/api/orders.json?page=${page}`, filter).toPromise();
   }
 
+  changeOrderStatus(order_status, id) {
+    return this.http.post(`${environment.endpoint}/orders/edit/${id}.json`, order_status).toPromise()
+  }
+
 }

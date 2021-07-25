@@ -26,14 +26,22 @@
                             style="cursor: pointer; direction: ltr;"
                             (click)="getOrderDetails(allData.orderdetails)">
                             <ng-container *ngFor="let d of allData | render">
-                                <td 
-                                    *ngIf="d != 'modified'"
-                                    [class.d-none]="d == 'orderdetails'">{{allData[d]}}</td>
-                            </ng-container>
-                            <ng-container *ngFor="let d of allData | render">
-                                <td 
-                                    *ngIf="d == 'modified'"                                    
-                                    [class.d-none]="d == 'orderdetails'">{{allData[d] | date}}</td>
+                                <td *ngIf="(d != 'order_status' && d != 'modified' && d != 'original')" [class.d-none]="d == 'orderdetails'">{{allData[d]}}</td>
+                                <td *ngIf="(d == 'order_status' && d != 'modified' && d != 'original')">
+                                    <ng-container *ngIf="allData[d] == 0">طلب جديد</ng-container>
+                                    <ng-container *ngIf="allData[d] == 1">يتم التجهيز</ng-container>
+                                    <ng-container *ngIf="allData[d] == 2">تم التجهيز</ng-container>                                   
+                                    <ng-container *ngIf="allData[d] == 3">تم التوصيل</ng-container>                                   
+                                </td>
+                                <td *ngIf="d == 'original'">
+                                    <button matRipplt class="btn btn-info" (click)="changeState(allData[d], $event)">
+                                       <span *ngIf="allData['order_status'] == 0">جار التجهيز</span>
+                                       <span *ngIf="allData['order_status'] == 1">تم التجهيز</span>
+                                       <span *ngIf="allData['order_status'] == 2">جار التوصيل</span>
+                                       <span *ngIf="allData['order_status'] == 3">تم التوصيل</span>
+                                    </button>   
+                                </td>
+                                <td *ngIf="d == 'modified'">{{allData[d] | date:'medium'}}</td>
                             </ng-container>                            
                         </tr>
                     </tbody>

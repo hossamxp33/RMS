@@ -4,18 +4,21 @@ export class OrdersHelper {
     
     shapeOrderObject(data: any[]) {
       let orders: any = [];
-  
+
       data.forEach(val => {
         let obj = {
-          id: val["id"],
+          id: val["id"],  
+          user: (Boolean(val["user"])) ? val["user"]["username"] : '',
+          adress: (Boolean(val["billing_addres"])) ? val["billing_addres"]["address"] : '',        
           total: val["total"],
           service: val["service"],
-          taxes: val["taxes"],
-          typeorder: val["typeorder"],
+          taxes: val["taxes"],  
+          discount: val["discount"],        
           platform: (Boolean(val["platform"])) ? val["platform"]["name"] : '',
           marketer: (Boolean(val["marketer"])) ? val["marketer"]["name"] : '',
+          paymenttype: (Boolean(val["paymenttype"])) ? val["paymenttype"]["name"] : '',
           order_status: val["order_status"],
-          address: (Boolean(val["user"])) ? val["user"]["address"] : '',
+          original: val,
           modified: val["modified"],
           orderdetails: val["orderdetails"],
         }

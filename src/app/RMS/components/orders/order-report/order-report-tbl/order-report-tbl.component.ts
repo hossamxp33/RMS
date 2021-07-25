@@ -14,14 +14,17 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
 
   header: any[] = [
     '#',
+    'العميل',
+    'العنوان',
     'تكلفة الطلب',
     'الخدمة',
     'الضريبة',
-    'نوع الطلب',
+    'خصم',
     'منصة الطلب',
     'المسوقين',
+    'وسيلة الدفع',
     'حالة الطلب',
-    'العنوان',
+    'تغير حالة الطلب',
     'التاريخ',
   ];
 
@@ -34,7 +37,7 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
     'الكمية',
     'السعر',
     'التاريخ',
-  ];    
+  ];  
 
   constructor(private helper: OrdersHelper, private service: OrdersService) { }
 
@@ -55,7 +58,24 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
     const data: any = await this.service.getOrdersByFilter(formData, page).toPromise();
     this.data = this.helper.shapeOrderObject(data.data)
     this.loading = false;
-  }  
+  } 
+  
+  async changeState(values, event) {
+    event.stopPropagation();
+    const order_status = values.order_status;
+    const formData = new FormData();
+    formData.append('order_status', (parseInt(order_status) + 1).toString())
+    
+    this.loading = true;
+
+    const data: any = await this.service.changeOrderStatus(formData, values.id);
+        
+    if (data.success) {
+      const change = this.data.filter(d => d.id != values.id);
+      this.data = this.helper.shapeOrderObject(change);
+    }
+    this.loading = false;
+  }
 
   ngOnChanges(changes: SimpleChanges) {
 
