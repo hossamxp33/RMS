@@ -21,6 +21,7 @@ export class OrdersHelper {
           original: val,
           modified: val["modified"],
           orderdetails: val["orderdetails"],
+          billing_addres: val["billing_addres"],
         }
   
         orders = [...orders, obj];

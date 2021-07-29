@@ -39,6 +39,9 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
     'التاريخ',
   ];  
 
+  billingData: any = {};
+  isBillingVisible: boolean = false;
+
   constructor(private helper: OrdersHelper, private service: OrdersService) { }
 
   ngOnInit() {
@@ -75,6 +78,12 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
       this.data = this.helper.shapeOrderObject(change);
     }
     this.loading = false;
+  }
+
+  showAdress(adress, event) {
+    event.stopPropagation();
+    this.billingData = adress;
+    this.isBillingVisible = true;
   }
 
   ngOnChanges(changes: SimpleChanges) {

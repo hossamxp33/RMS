@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@agm/core": "^1.0.0-beta.7",
+    "@agm/core": "^1.1.0",
     "@angular/animations": "^8.2.0-next.1",
     "@angular/cdk": "~8.2.3",
     "@angular/common": "^8.2.0-next.1",
@@ -42,6 +42,7 @@
     "d3": "^4.8.0",
     "datatables.net": "^1.10.19",
     "datatables.net-dt": "^1.10.19",
+    "google-maps": "^4.3.3",
     "hammerjs": "^2.0.8",
     "lodash": "^4.17.14",
     "ng-chartist": "^1.1.1",

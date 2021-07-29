@@ -20,6 +20,7 @@ export class ExpensessReportTblComponent implements OnInit, OnChanges {
     'المصروفات',
     'اخر المدفوعات',
     'ديون',
+    'صورة',
     'التاريخ',
   ];
   

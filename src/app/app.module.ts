@@ -12,7 +12,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 
 import { FullComponent } from './layouts/full/full.component';
@@ -100,6 +100,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgZorroAntdModule, 
   ],
   providers: [
+    GoogleMapsAPIWrapper,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG

@@ -23,7 +23,7 @@ import { PipesModule } from "./pipes.module";
     imports: [
         CommonModule,  
         AntModule,
-        PipesModule 
+        PipesModule,        
     ],
     exports: [
         ReactiveFormsModule,
@@ -36,6 +36,9 @@ import { PipesModule } from "./pipes.module";
         StatsInfoComponent,
         InfoTblComponent,        
     ],
+    providers: [
+        
+    ]
 })
 
 export class SharedModule {}

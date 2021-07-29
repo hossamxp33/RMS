@@ -4,6 +4,7 @@ export class ExpensessHelper {
 
     shapeExpensData(data: any[]) {
         let expensess: any = [];
+        console.log(data)
         data.forEach(val => {
           let obj = {
             id: val["id"],
@@ -13,6 +14,7 @@ export class ExpensessHelper {
             totalproduct: val["totalproduct"],
             lastpayments: val["lastpayments"],
             payment_type: val["payment_type"],
+            photo: val["photo"],
             modified: val["modified"],
           }
     

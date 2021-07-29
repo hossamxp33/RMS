@@ -23,10 +23,10 @@
             </thead>
             <tbody>
                 <tr *ngFor="let allData of headerTable.data; let i = index" >
-                    <td 
-                        *ngFor="let d of allData | render" 
-                        class="hide-long-text"
-                        [class.text-center]="allData[d]">{{allData[d]}}</td>
+                    <ng-container *ngFor="let d of allData | render">
+                        <td *ngIf="d != 'modified'">{{allData[d]}}</td>
+                        <td *ngIf="d == 'modified'">{{allData[d] | date:'medium'}}</td>
+                    </ng-container>
                 </tr>
             </tbody>
         </nz-table>

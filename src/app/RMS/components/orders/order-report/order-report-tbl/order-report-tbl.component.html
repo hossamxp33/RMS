@@ -26,8 +26,11 @@
                             style="cursor: pointer; direction: ltr;"
                             (click)="getOrderDetails(allData.orderdetails)">
                             <ng-container *ngFor="let d of allData | render">
-                                <td *ngIf="(d != 'order_status' && d != 'modified' && d != 'original')" [class.d-none]="d == 'orderdetails'">{{allData[d]}}</td>
-                                <td *ngIf="(d == 'order_status' && d != 'modified' && d != 'original')">
+                                <td *ngIf="(d != 'order_status' && d != 'modified' && d != 'original' && d != 'adress')" [class.d-none]="(d == 'orderdetails' || d == 'billing_addres')">{{allData[d]}}</td>
+                                <ng-container *ngIf="d == 'adress'">
+                                    <td (click)="showAdress(allData['billing_addres'], $event)">{{allData[d]}}</td>
+                                </ng-container>
+                                <td *ngIf="(d == 'order_status' && d != 'modified' && d != 'original' && d != 'adress')">
                                     <ng-container *ngIf="allData[d] == 0">طلب جديد</ng-container>
                                     <ng-container *ngIf="allData[d] == 1">يتم التجهيز</ng-container>
                                     <ng-container *ngIf="allData[d] == 2">تم التجهيز</ng-container>                                   
@@ -59,3 +62,9 @@
     [isVisible]="isVisible"
     (closeDV)="isVisible = $event"
 ></app-popup-details>
+
+<app-adress-popup
+    [data]="billingData"
+    [isVisible]="isBillingVisible"
+    (close)="isBillingVisible = $event"
+></app-adress-popup>
