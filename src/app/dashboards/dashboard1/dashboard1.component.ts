@@ -101,7 +101,8 @@ export class Dashboard1Component implements OnInit {
 
     this.marketersOrders$ = this.store.pipe(select(selectMarketersOrders));
     this.marketersOrders$.subscribe(res => this.marketersOrders = res);
-
+    this.marketersOrders = this.marketersOrders.filter(m => Boolean(m["marketer"]))
+    
     this.platFormsOrders$ = this.store.pipe(select(selectPlatformsOrders));
     this.platFormsOrders$.subscribe(res => this.platFormsOrders = res);
     this.platFormsOrders = this.platFormsOrders.filter(p => Boolean(p["platform"]))
