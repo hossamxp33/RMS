@@ -17,4 +17,13 @@ export class OrderReportResolver implements Resolve<any> {
         localStorage.setItem('lastFilterValue', order_status);
         return this.services.getOrdersByFilter(formData, 1);
     }
+    resolves(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<any>{
+        const formData = new FormData();
+        const order_status: any = 0;
+        formData.append('Filter[order_status]', order_status);
+        localStorage.setItem('lastFilter', 'Filter[order_status]');
+        localStorage.setItem('lastFilterValue', order_status);
+        return this.services.getOrdersByFilter(formData, 1);
+    }
+    
 }

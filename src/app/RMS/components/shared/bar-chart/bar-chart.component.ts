@@ -50,10 +50,10 @@ export class BarChartComponent implements OnInit, AfterViewInit {
         'الجمعة',
       ]
     } else {
-      (this.selector == 'month-chart') ? this.orderLabels = this.sales.map(s => this.service.formatDate(s[this.orderLabelsKey])) : this.orderLabels = this.sales.map(s => `${s[this.orderLabelsKey]} - ${s[this.orderTotalKey].toFixed(2)}`);
+      (this.selector == 'month-chart') ? this.orderLabels = this.sales.map(s => this.service.formatDate(s[this.orderLabelsKey])) : this.orderLabels = this.sales.map(s => `${s[this.orderLabelsKey]} - ${s[this.orderTotalKey]}`);
     }
 
-    this.orderTotal = this.sales.map(s => parseFloat(s[this.orderTotalKey].toFixed(2)));
+    this.orderTotal = this.sales.map(s => parseFloat(s[this.orderTotalKey]));
     
     (this.selector == 'week-chart' || this.selector == 'month-chart') && this.orderTotal.reverse();
     (this.selector == 'week-chart' || this.selector == 'month-chart') && this.orderLabels.reverse();

@@ -23,21 +23,36 @@
                     <tbody>
                         <tr 
                             *ngFor="let allData of data; let i = index" 
-                            style="cursor: pointer; direction: ltr;"
-                            (click)="getOrderDetails(allData.orderdetails)">
+                            style="cursor: pointer; "
+                           >
                             <ng-container *ngFor="let d of allData | render">
-                                <td *ngIf="(d != 'order_status' && d != 'modified' && d != 'original' && d != 'adress')" [class.d-none]="(d == 'orderdetails' || d == 'billing_addres')">{{allData[d]}}</td>
+                                <td *ngIf="(d != 'order_status' && d != 'modified' && d != 'original' && d != 'adress'  && d != 'driver')" [class.d-none]="(d == 'orderdetails' || d == 'billing_addres')">{{allData[d]}}</td>
                                 <ng-container *ngIf="d == 'adress'">
                                     <td (click)="showAdress(allData['billing_addres'], $event)">{{allData[d]}}</td>
                                 </ng-container>
-                                <td *ngIf="(d == 'order_status' && d != 'modified' && d != 'original' && d != 'adress')">
+                                
+                                <td *ngIf="(d == 'order_status' && d != 'modified' && d != 'original' && d != 'adress'  && d != 'driver')">
                                     <ng-container *ngIf="allData[d] == 0">طلب جديد</ng-container>
                                     <ng-container *ngIf="allData[d] == 1">يتم التجهيز</ng-container>
                                     <ng-container *ngIf="allData[d] == 2">تم التجهيز</ng-container>                                   
                                     <ng-container *ngIf="allData[d] == 3">تم التوصيل</ng-container>                                   
                                 </td>
+                                <td *ngIf="d == 'driver' && allData.order_status == 2"> 
+                                    <nz-select 
+                                    [(ngModel)]="selectedPaymenttypes[i]"
+                                    nzShowSearch 
+                                    nzAllowClear 
+                                    nzPlaceHolder="   "
+                                    [nzSize]="'large'"
+                                    >
+                                    <nz-option 
+                                        *ngFor="let p of drivers" 
+                                        [nzLabel]="p.username" 
+                                        [nzValue]="p.id"></nz-option>
+                                </nz-select>       
+                               </td>
                                 <td *ngIf="d == 'original'">
-                                    <button matRipplt class="btn btn-info" (click)="changeState(allData[d], $event)">
+                                    <button matRipplt class="btn btn-info" (click)="changeState(i,allData[d], $event)">
                                        <span *ngIf="allData['order_status'] == 0">جار التجهيز</span>
                                        <span *ngIf="allData['order_status'] == 1">تم التجهيز</span>
                                        <span *ngIf="allData['order_status'] == 2">جار التوصيل</span>

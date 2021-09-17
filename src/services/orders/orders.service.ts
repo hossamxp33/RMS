@@ -15,6 +15,12 @@ export class OrdersService {
     return this.http.post(`${environment.endpoint}/orderdetails/sellallitems.json`, filterBy)
   }
 
+  getCompanyShipOrders() {   
+    const formData = new FormData();
+    const order_status: any = 0;
+    formData.append('Filter[order_status]', "1"); 
+    return this.http.post(`${environment.endpoint}/orders.json?page=1`, formData).toPromise();
+  }
   getOrdersByFilter(filter, page): Observable<any> {
     return this.http.post(`${environment.endpoint}/orders.json?page=${page}`, filter)
       .pipe(
@@ -28,6 +34,13 @@ export class OrdersService {
 
   changeOrderStatus(order_status, id) {
     return this.http.post(`${environment.endpoint}/orders/edit/${id}.json`, order_status).toPromise()
+  }
+
+
+  getDriver(){
+
+    return this.http.get(`${environment.endpoint}/users/GetDrivers.json`).toPromise()
+
   }
 
 }

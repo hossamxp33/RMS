@@ -19,7 +19,10 @@ export class OrdersHelper {
           platform: (Boolean(val["platform"])) ? val["platform"]["name"] : '',
           marketer: (Boolean(val["marketer"])) ? val["marketer"]["name"] : '',
           paymenttype: (Boolean(val["paymenttype"])) ? val["paymenttype"]["name"] : '',
+          driver: val,
+
           order_status: val["order_status"],
+
           original: val,
           modified: val["modified"],
           orderdetails: val["orderdetails"],

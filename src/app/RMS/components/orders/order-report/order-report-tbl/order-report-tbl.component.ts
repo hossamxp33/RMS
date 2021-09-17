@@ -11,6 +11,7 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
   @Input('data') data: any[] = [];
   @Input('pages') pages: any = {};
   @Input('loading') loading: boolean = false;
+  selectedPaymenttypes  : string[] = [];
 
   header: any[] = [
     '#',
@@ -25,6 +26,8 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
     'منصة الطلب',
     'المسوقين',
     'وسيلة الدفع',
+    'المندوب',
+
     'حالة الطلب',
     'تغير حالة الطلب',
     'التاريخ',
@@ -32,7 +35,8 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
 
   details: any = [];
   isVisible: boolean = false;
-  
+  drivers: any = [];
+
   popupHeader: any[] = [
     '#',
     'الطبق',
@@ -47,6 +51,12 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
   constructor(private helper: OrdersHelper, private service: OrdersService) { }
 
   ngOnInit() {
+    this.getDrivers()
+    if (localStorage.getItem("groupid") == "1"){
+
+ this.header.splice(11, 1);
+
+    }
   }
 
 
@@ -65,21 +75,23 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
     this.loading = false;
   } 
   
-  async changeState(values, event) {
+  async changeState(index,values, event) {
     event.stopPropagation();
+    console.log(this.selectedPaymenttypes[index])
     const order_status = values.order_status;
     const formData = new FormData();
     formData.append('order_status', (parseInt(order_status) + 1).toString())
-    
+    formData.append('waiter_id', this.selectedPaymenttypes[index])
+
     this.loading = true;
 
     const data: any = await this.service.changeOrderStatus(formData, values.id);
         
-    if (data.success) {
-      const change = this.data.filter(d => d.id != values.id);
-      this.data = this.helper.shapeOrderObject(change);
-    }
-    this.loading = false;
+     if (data.success) {
+       const change = this.data.filter(d => d.id != values.id);
+       this.data = this.helper.shapeOrderObject(change);
+     }
+     this.loading = false;
   }
 
   showAdress(adress, event) {
@@ -87,7 +99,11 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
     this.billingData = adress;
     this.isBillingVisible = true;
   }
+  async getDrivers() {
+    const drivers: any = await this.service.getDriver();
+this.drivers = drivers.drivers
 
+  }
   ngOnChanges(changes: SimpleChanges) {
 
     for (const prop in changes) {

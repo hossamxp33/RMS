@@ -11,17 +11,19 @@ export class OrderShipComponent implements OnInit {
   orders: any[] = [];
   loading: boolean = false;
   pages: any = {};
-  constructor(private router: ActivatedRoute,private services: OrdersService) { }
+  constructor(private router: ActivatedRoute,private services: OrdersService) {
+
+
+   }
 
   ngOnInit() {
-    alert('sd')
-    this.router.data.subscribe(
-      res => {
-        this.orders = res.orders.data;
-        this.pages = res.orders.pagination;
-     
-      }
-    )
+   this.getdata()
   }
+  async getdata(){
 
+  const data: any = await  this.services.getCompanyShipOrders()
+  console.log(data)
+  this.orders = data.data;
+  this.pages = data.pagination;
+}
 }

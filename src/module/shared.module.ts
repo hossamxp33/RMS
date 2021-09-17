@@ -18,7 +18,8 @@ import { PipesModule } from "./pipes.module";
         StatsInfoComponent,
         InfoTblComponent,
         ExpensessDetailsComponent,
-        LoansInfoComponent
+        LoansInfoComponent,
+        
     ],
     imports: [
         CommonModule,  

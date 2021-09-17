@@ -31,7 +31,8 @@ export const Approutes: Routes = [
       {
         path: 'orders',
         loadChildren: () => import('./RMS/components/orders/order.module').then(m => m.OrdersModule)
-      },
+      }
+      ,
       {
         path: 'items',
         loadChildren: () => import('./RMS/components/items/items.module').then(m => m.ItemsModule)
@@ -93,12 +94,10 @@ export const Approutes: Routes = [
     ]
   },
   
+  
   {
-    path: 'CompanyOrders',
-    component: OrderShipComponent,
-                
-    resolve: {
-    } 
+    path: 'companyorder',
+    loadChildren: () => import('./RMS/components/order-ship/order-ship.module').then(m => m.OrderShipModule)
   },
   {
     path: '**',

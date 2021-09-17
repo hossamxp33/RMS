@@ -1,0 +1,57 @@
+<div class="page-wrapperr" >
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-5 align-self-center">
+                <h4 class="page-title">طلبات شركة الشحن اليومية</h4>
+                <div class="d-flex align-items-center">
+    
+                </div>
+            </div>
+            <!--<div class="col-7 align-self-center">
+                <div class="d-flex no-block justify-content-end align-items-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <ng-template ngFor let-url [ngForOf]="pageInfo?.urls" let-last="last">
+                                <li class="breadcrumb-item" *ngIf="!last" [routerLink]="url.url">
+                                    <a href='javascript:void(0)'>{{url.title}}</a>
+                                </li>
+                                <li class="breadcrumb-item active" *ngIf="last">{{url.title}}</li>
+                            </ng-template>
+                        </ol>
+                    </nav>
+                </div>
+            </div>-->
+        </div>
+    </div>
+        <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Loader -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- End Start Page Loader -->
+        <!-- ============================================================== -->  
+                    
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <app-order-report-tbl [data]="orders" [pages]="pages" [loading]="loading"></app-order-report-tbl>
+
+        <!-- ============================================================== -->
+        <router-outlet></router-outlet>
+        <!-- ============================================================== -->
+        <!-- End Start Page Content -->
+        <!-- ============================================================== -->          
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer text-center">
+        جميع الحقوق محفوظة.
+    </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+</div>

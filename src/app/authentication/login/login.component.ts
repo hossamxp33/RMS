@@ -33,8 +33,11 @@ export class LoginComponent implements OnInit {
       res => {
         console.log(res)
       localStorage.setItem("username",res.data.username)
+      localStorage.setItem("groupid",res.data.group)
+
       if (res.data.group == 5){
 
+        this.router.navigate(['/companyorder/all'])
 
       }else {
        this.router.navigate(['/dashboard/dashboard1'])
