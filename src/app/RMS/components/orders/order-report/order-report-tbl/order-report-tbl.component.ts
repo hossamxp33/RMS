@@ -16,6 +16,8 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
     '#',
     'العميل',
     'العنوان',
+    'المنطقة',
+
     'تكلفة الطلب',
     'الخدمة',
     'الضريبة',

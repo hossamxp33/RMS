@@ -29,7 +29,19 @@ export class LoginComponent implements OnInit {
     this.isSignIn = !this.isSignIn;
 
     this.usersService.login(this.loginForm.getRawValue()).subscribe(
-      res => this.router.navigate(['/dashboard/dashboard1']),
+      
+      res => {
+        console.log(res)
+      localStorage.setItem("username",res.data.username)
+      if (res.data.group == 5){
+
+
+      }else {
+       this.router.navigate(['/dashboard/dashboard1'])
+      }
+
+      }
+      ,
       err => this.isSignIn = !this.isSignIn
     ).remove(this.sub)
   }

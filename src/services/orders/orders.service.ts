@@ -16,14 +16,14 @@ export class OrdersService {
   }
 
   getOrdersByFilter(filter, page): Observable<any> {
-    return this.http.post(`http://wokhouse.codesroots.com/api/orders.json?page=${page}`, filter)
+    return this.http.post(`${environment.endpoint}/orders.json?page=${page}`, filter)
       .pipe(
         shareReplay()
       )
   }
 
   getOrdersByFilter2(filter, page) {
-    return this.http.post(`http://wokhouse.codesroots.com/api/orders.json?page=${page}`, filter).toPromise();
+    return this.http.post(`${environment.endpoint}/orders.json?page=${page}`, filter).toPromise();
   }
 
   changeOrderStatus(order_status, id) {

@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { FullComponent } from './layouts/full/full.component';
 import { BlankComponent } from './layouts/blank/blank.component';
+import { OrderShipComponent } from './RMS/components/order-ship/order-ship.component';
+import { OrderReportResolver } from './RMS/components/orders/order-report/services/order-report.resolver';
 
 export const Approutes: Routes = [
   {
@@ -81,6 +83,8 @@ export const Approutes: Routes = [
     path: '',
     component: BlankComponent,
     children: [
+      
+   
       {
         path: 'authentication',
         loadChildren:
@@ -88,8 +92,17 @@ export const Approutes: Routes = [
       }
     ]
   },
+  
+  {
+    path: 'CompanyOrders',
+    component: OrderShipComponent,
+                
+    resolve: {
+    } 
+  },
   {
     path: '**',
     redirectTo: '/authentication/404'
   }
+
 ];

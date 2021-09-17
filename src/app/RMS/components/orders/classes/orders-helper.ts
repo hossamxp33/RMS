@@ -10,6 +10,8 @@ export class OrdersHelper {
           id: val["id"],  
           user: (Boolean(val["user"])) ? val["user"]["username"] : '',
           adress: (Boolean(val["billing_addres"])) ? val["billing_addres"]["address"] : '',        
+          area: (Boolean(val["area"])) ? val["area"]["name"] : '',        
+
           total: val["total"],
           service: val["service"],
           taxes: val["taxes"],  

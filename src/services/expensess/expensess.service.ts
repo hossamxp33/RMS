@@ -23,7 +23,7 @@ export class ExpensessService {
   }
 
   filterExpensesReport(filter) {
-    return this.http.post(`http://wokhouse.codesroots.com/api/Expenses/getListExpensesDetailsByCategory.json`, filter).toPromise()
+    return this.http.post(`${environment.endpoint}/Expenses/getListExpensesDetailsByCategory.json`, filter).toPromise()
   }
 
 }

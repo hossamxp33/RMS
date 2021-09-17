@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  endpoint: 'https://wokhouse.codesroots.com/api'
+  endpoint: 'https://system.city-rolls.com/api'
 };
 
 /*

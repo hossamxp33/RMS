@@ -14,7 +14,7 @@ export class UsersService {
   constructor(private http: HttpClient, private generic: GenericService) { }
 
   login(obj) {
-    return this.http.post(`${environment.endpoint}/users/token.json`, obj)
+    return this.http.post<any>(`${environment.endpoint}/users/token.json`, obj)
       .pipe(
         tap(
           res => this.generic.showNotification('success', this.lang.loginTitleTxt ,this.lang.loginSuccessTxt),

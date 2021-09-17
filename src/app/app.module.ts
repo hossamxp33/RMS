@@ -44,6 +44,7 @@ import { ExpensessService } from 'src/services/expensess/expensess.service';
 import { StaffService } from 'src/services/staff/staff.service';
 import { PublicLoaderComponent } from './RMS/components/shared/public-loader/public-loader.component';
 import { ItemsService } from 'src/services/items/items.service';
+import { OrderShipComponent } from './RMS/components/order-ship/order-ship.component';
 
 registerLocaleData(en);
 
@@ -59,11 +60,13 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AppComponent,
     SpinnerComponent,
     FullComponent,
+    
     BlankComponent,
     NavigationComponent,
     BreadcrumbComponent,
     SidebarComponent,
-    PublicLoaderComponent
+    PublicLoaderComponent,
+    OrderShipComponent
   ],
   imports: [
     CommonModule,
@@ -100,6 +103,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgZorroAntdModule, 
   ],
   providers: [
+    
     GoogleMapsAPIWrapper,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
